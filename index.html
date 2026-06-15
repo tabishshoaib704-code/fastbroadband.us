@@ -1172,6 +1172,16 @@
 <button class="float-cta" onclick="openPopup()" aria-label="Get a Free Quote">
   📋 <span class="float-label">Free Quote</span>
 </button>
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+// ── EmailJS config ──────────────────────────────────────────────
+// SETUP: https://www.emailjs.com (free account, connect Gmail)
+var EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
+var EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
+var EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+emailjs.init(EMAILJS_PUBLIC_KEY);
+</script>
 
 <script>
 /* ── POPUP ── */
@@ -1222,12 +1232,35 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup()
 
 /* ── FORM SUBMIT ── */
 function submitForm() {
-  const name = document.getElementById('f-name').value.trim();
-  const phone = document.getElementById('f-phone').value.trim();
-  if (!name) { document.getElementById('f-name').focus(); return; }
+  var name  = document.getElementById('f-name').value.trim();
+  var phone = document.getElementById('f-phone').value.trim();
+  if (!name)  { document.getElementById('f-name').focus();  return; }
   if (!phone) { document.getElementById('f-phone').focus(); return; }
-  document.getElementById('popup-form-view').style.display = 'none';
-  document.getElementById('popup-success-view').classList.add('active');
+
+  var btn = document.querySelector('.form-submit');
+  if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+
+  var params = {
+    from_name : name + ' ' + (document.getElementById('f-lname').value.trim()),
+    phone     : phone,
+    email     : document.getElementById('f-email').value.trim() || 'Not provided',
+    zip       : document.getElementById('f-zip').value.trim() || 'Not provided',
+    service   : document.getElementById('f-service').value || 'Not selected',
+    provider  : 'N/A',
+    message   : document.getElementById('f-msg').value.trim() || 'None',
+    page      : 'Homepage – Quote Popup'
+  };
+
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params)
+    .then(function(){
+      document.getElementById('popup-form-view').style.display = 'none';
+      document.getElementById('popup-success-view').classList.add('active');
+    })
+    .catch(function(err){
+      console.error('EmailJS error:', err);
+      document.getElementById('popup-form-view').style.display = 'none';
+      document.getElementById('popup-success-view').classList.add('active');
+    });
 }
 
 /* ── PLANS TABS ── */
