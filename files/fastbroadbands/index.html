@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FastBroadbands — Authorized Verizon Retailer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #CD040B;
+    --red-dark: #A3030B;
+    --red-light: #FF1A23;
+    --black: #0A0A0A;
+    --dark: #111111;
+    --card: #1A1A1A;
+    --border: #2A2A2A;
+    --muted: #888888;
+    --light: #F5F5F5;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--white); line-height: 1.6; }
+
+  /* ── POPUP OVERLAY ── */
+  .popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .popup-overlay.active { display: flex; }
+  .popup-box {
+    background: var(--dark);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    overflow: hidden;
+    animation: popIn 0.28s cubic-bezier(.34,1.56,.64,1);
+  }
+  @keyframes popIn {
+    from { opacity:0; transform: scale(0.88) translateY(20px); }
+    to   { opacity:1; transform: scale(1) translateY(0); }
+  }
+  .popup-header {
+    background: linear-gradient(135deg, var(--red-dark), var(--red));
+    padding: 26px 28px 22px;
+    position: relative;
+  }
+  .popup-header-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 100px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.07em;
+    text-transform: uppercase; padding: 3px 10px; margin-bottom: 10px;
+    color: var(--white);
+  }
+  .popup-header h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px; font-weight: 900;
+    text-transform: uppercase; line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .popup-header p { font-size: 13.5px; opacity: 0.88; margin-top: 6px; }
+  .popup-close {
+    position: absolute; top: 14px; right: 16px;
+    background: rgba(255,255,255,0.15);
+    border: none; color: var(--white);
+    width: 32px; height: 32px; border-radius: 50%;
+    font-size: 18px; cursor: pointer; display: flex;
+    align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .popup-close:hover { background: rgba(255,255,255,0.3); }
+  .popup-body { padding: 28px; }
+  .popup-call-block {
+    background: rgba(205,4,11,0.08);
+    border: 1px solid rgba(205,4,11,0.25);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 22px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .popup-call-block:hover { background: rgba(205,4,11,0.15); }
+  .popup-call-icon { font-size: 34px; flex-shrink: 0; }
+  .popup-call-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+  .popup-call-num { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 800; color: var(--white); letter-spacing: 0.02em; }
+  .popup-call-sub { font-size: 11.5px; color: #4CAF50; font-weight: 600; }
+  .popup-divider {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 12px; color: var(--muted); margin-bottom: 20px;
+  }
+  .popup-divider::before, .popup-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .form-group { display: flex; flex-direction: column; gap: 5px; }
+  .form-group.full { grid-column: 1/-1; }
+  .form-group label { font-size: 12px; font-weight: 600; color: #BBBBBB; letter-spacing: 0.04em; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: #111;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--white);
+    font-size: 14px;
+    padding: 10px 12px;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
+    outline: none;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--red); }
+  .form-group select option { background: #111; }
+  .form-group textarea { resize: vertical; min-height: 72px; }
+  .form-submit {
+    width: 100%;
+    background: var(--red);
+    border: none;
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px;
+    border-radius: 9px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+    font-family: 'Inter', sans-serif;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .form-submit:hover { background: var(--red-light); }
+  .form-note { font-size: 11.5px; color: var(--muted); text-align: center; margin-top: 12px; }
+
+  /* ── SUCCESS STATE ── */
+  .popup-success {
+    display: none;
+    padding: 48px 28px;
+    text-align: center;
+  }
+  .popup-success.active { display: block; }
+  .success-icon { font-size: 52px; margin-bottom: 16px; }
+  .success-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px; font-weight: 900;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .success-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
+  .success-close {
+    background: var(--red); border: none; color: var(--white);
+    padding: 12px 28px; border-radius: 8px;
+    font-size: 14px; font-weight: 700; cursor: pointer;
+    font-family: 'Inter', sans-serif; transition: background 0.2s;
+  }
+  .success-close:hover { background: var(--red-light); }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--red); text-align: center;
+    padding: 8px 16px; font-size: 13px; font-weight: 500; letter-spacing: 0.03em;
+  }
+  .topbar a { color: var(--white); text-decoration: underline; cursor: pointer; }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--dark); border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 500;
+  }
+  .nav-inner {
+    max-width: 1200px; margin: auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between; height: 64px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-badge {
+    background: var(--red); color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: 22px; letter-spacing: 0.04em; padding: 4px 10px 3px; border-radius: 4px;
+  }
+  .logo-text { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 20px; color: var(--white); letter-spacing: 0.02em; }
+  .logo-text span { color: var(--red); }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a { color: #CCCCCC; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--red) !important; color: var(--white) !important;
+    padding: 9px 18px; border-radius: 6px; font-weight: 700 !important;
+    cursor: pointer; border: none; font-size: 14px; font-family: 'Inter', sans-serif;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--red-light) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0A0A0A 0%, #1A0000 50%, #0A0A0A 100%);
+    padding: 80px 24px 90px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -120px; right: -120px;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(205,4,11,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1200px; margin: auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(205,4,11,0.15); border: 1px solid rgba(205,4,11,0.35);
+    color: #FF6B6B; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 100px; margin-bottom: 20px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px; background: var(--red);
+    border-radius: 50%; animation: blink 1.5s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: clamp(44px, 6vw, 72px); line-height: 1.0;
+    letter-spacing: -0.01em; margin-bottom: 20px; text-transform: uppercase;
+  }
+  .hero h1 .accent { color: var(--red); }
+  .hero-sub { font-size: 17px; color: #BBBBBB; margin-bottom: 36px; max-width: 460px; line-height: 1.65; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--red); color: var(--white);
+    padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 15px;
+    text-decoration: none; transition: all 0.2s; border: 2px solid var(--red);
+    cursor: pointer; font-family: 'Inter', sans-serif;
+  }
+  .btn-primary:hover { background: var(--red-light); border-color: var(--red-light); transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: var(--white);
+    padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 15px;
+    text-decoration: none; border: 2px solid var(--border); transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: #555; background: rgba(255,255,255,0.05); }
+  .hero-stats {
+    display: flex; gap: 32px; margin-top: 40px;
+    padding-top: 32px; border-top: 1px solid var(--border);
+  }
+  .hero-stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 32px; color: var(--white); letter-spacing: -0.02em; }
+  .hero-stat-num span { color: var(--red); }
+  .hero-stat-label { font-size: 12px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* Hero card */
+  .hero-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 32px; position: relative;
+  }
+  .hero-card-tag {
+    position: absolute; top: -14px; left: 24px;
+    background: var(--red); color: var(--white);
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 4px 12px; border-radius: 100px;
+  }
+  .hero-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .hero-card-price { font-family: 'Barlow Condensed', sans-serif; font-size: 52px; font-weight: 900; line-height: 1; margin: 10px 0 4px; }
+  .hero-card-price sup { font-size: 26px; vertical-align: top; margin-top: 10px; display: inline-block; }
+  .hero-card-price sub { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; color: var(--muted); }
+  .hero-card-note { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+  .hero-card-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
+  .hero-card-features li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #CCCCCC; }
+  .hero-card-features li::before {
+    content: '✓'; display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; background: rgba(205,4,11,0.15);
+    border: 1px solid rgba(205,4,11,0.4); color: #FF6B6B;
+    border-radius: 50%; font-size: 11px; font-weight: 700; flex-shrink: 0;
+  }
+  .hero-card-btn {
+    display: block; text-align: center; background: var(--red); color: var(--white);
+    padding: 13px; border-radius: 8px; font-weight: 700; font-size: 15px;
+    text-decoration: none; transition: background 0.2s; cursor: pointer;
+    border: none; width: 100%; font-family: 'Inter', sans-serif;
+  }
+  .hero-card-btn:hover { background: var(--red-light); }
+  .hero-card-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+  .hero-card-footer { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12px; color: var(--muted); text-align: center; }
+
+  /* ── TRUST BAR ── */
+  .trust-bar { background: var(--dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 24px; }
+  .trust-inner { max-width: 1200px; margin: auto; display: flex; gap: 0; justify-content: space-around; flex-wrap: wrap; }
+  .trust-item { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: #BBBBBB; padding: 6px 16px; }
+  .trust-icon { font-size: 20px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 24px; }
+  .section-inner { max-width: 1200px; margin: auto; }
+  .section-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(30px, 4vw, 46px); line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 14px; text-transform: uppercase; }
+  .section-sub { color: var(--muted); font-size: 16px; max-width: 540px; margin-bottom: 48px; line-height: 1.65; }
+
+  /* ── PLANS ── */
+  .plans-section { background: #0D0D0D; }
+  .plans-tabs { display: flex; gap: 8px; margin-bottom: 36px; flex-wrap: wrap; }
+  .tab-btn {
+    background: var(--card); border: 1px solid var(--border); color: var(--muted);
+    padding: 9px 20px; border-radius: 6px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }
+  .tab-btn.active, .tab-btn:hover { background: var(--red); border-color: var(--red); color: var(--white); }
+  .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .plan-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px 24px; position: relative; transition: border-color 0.2s, transform 0.2s;
+  }
+  .plan-card:hover { border-color: #444; transform: translateY(-2px); }
+  .plan-card.featured { border-color: var(--red); background: linear-gradient(160deg, #1A0000 0%, var(--card) 60%); }
+  .plan-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--red); color: var(--white); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.07em; text-transform: uppercase; padding: 3px 14px;
+    border-radius: 100px; white-space: nowrap;
+  }
+  .plan-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 22px; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 6px; }
+  .plan-tagline { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+  .plan-price { font-family: 'Barlow Condensed', sans-serif; font-size: 48px; font-weight: 900; line-height: 1; margin-bottom: 4px; }
+  .plan-price sup { font-size: 22px; vertical-align: top; margin-top: 8px; display: inline-block; }
+  .plan-price-note { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 22px; }
+  .plan-features li { display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; color: #CCCCCC; }
+  .plan-features li .check { color: #4CAF50; flex-shrink: 0; margin-top: 1px; }
+  .plan-features li .x { color: #666; flex-shrink: 0; margin-top: 1px; }
+  .plan-divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+  .plan-btn {
+    display: block; text-align: center; padding: 11px; border-radius: 7px;
+    font-weight: 700; font-size: 14px; cursor: pointer; width: 100%;
+    font-family: 'Inter', sans-serif; transition: all 0.2s;
+  }
+  .plan-btn-solid { background: var(--red); color: var(--white); border: none; }
+  .plan-btn-solid:hover { background: var(--red-light); }
+  .plan-btn-outline { border: 2px solid var(--border); color: var(--white); background: transparent; }
+  .plan-btn-outline:hover { border-color: #555; background: rgba(255,255,255,0.05); }
+  .plan-speed { font-size: 12px; color: var(--muted); text-align: center; margin-top: 10px; }
+
+  /* ── SERVICES ── */
+  .services-strip { background: var(--black); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .service-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 28px 24px; text-align: center;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: pointer; text-decoration: none; color: inherit; display: block;
+  }
+  .service-card:hover { border-color: var(--red); transform: translateY(-3px); }
+  .service-icon { font-size: 38px; margin-bottom: 14px; }
+  .service-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 8px; }
+  .service-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+  .service-arrow { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--red); }
+
+  /* ── WHY US ── */
+  .why-section { background: #0D0D0D; }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .why-list { display: flex; flex-direction: column; gap: 26px; }
+  .why-item { display: flex; gap: 18px; align-items: flex-start; }
+  .why-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 36px; color: rgba(205,4,11,0.2); line-height: 1; flex-shrink: 0; width: 44px; text-align: right; }
+  .why-content h4 { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
+  .why-content p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .why-visual { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 36px; display: flex; flex-direction: column; gap: 20px; }
+  .why-visual-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; color: var(--red); margin-bottom: 8px; }
+  .rating-row { display: flex; align-items: center; justify-content: space-between; }
+  .rating-label { font-size: 13px; color: var(--muted); }
+  .rating-bar-wrap { width: 55%; background: var(--border); border-radius: 100px; height: 6px; }
+  .rating-bar { height: 6px; border-radius: 100px; background: var(--red); }
+  .rating-val { font-size: 13px; font-weight: 700; }
+  .cert-badge { display: flex; align-items: center; gap: 12px; background: rgba(205,4,11,0.08); border: 1px solid rgba(205,4,11,0.2); border-radius: 10px; padding: 14px 16px; }
+  .cert-badge-icon { font-size: 28px; }
+  .cert-badge-text strong { font-size: 14px; font-weight: 700; display: block; }
+  .cert-badge-text span { font-size: 12px; color: var(--muted); }
+
+  /* ── PROMO ── */
+  .promo-section { background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 50%, var(--red-dark) 100%); padding: 60px 24px; text-align: center; }
+  .promo-section h2 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(32px, 5vw, 56px); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 12px; }
+  .promo-section p { font-size: 17px; opacity: 0.9; margin-bottom: 28px; }
+  .promo-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-white { background: var(--white); color: var(--red); padding: 14px 30px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; border: none; font-family: 'Inter', sans-serif; }
+  .btn-white:hover { background: var(--light); transform: translateY(-1px); }
+  .btn-outline-white { border: 2px solid rgba(255,255,255,0.5); color: var(--white); padding: 14px 30px; border-radius: 8px; font-weight: 600; font-size: 15px; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+
+  /* ── HOW IT WORKS ── */
+  .how-section { background: var(--black); }
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+  .step-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 22px; text-align: center; }
+  .step-num { font-family: 'Barlow Condensed', sans-serif; font-size: 52px; font-weight: 900; color: rgba(205,4,11,0.15); line-height: 1; margin-bottom: 14px; }
+  .step-icon { font-size: 28px; margin-bottom: 10px; }
+  .step-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── FAQ ── */
+  .faq-section { background: #0D0D0D; }
+  .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 760px; margin: 0 auto; }
+  .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .faq-q { width: 100%; background: none; border: none; color: var(--white); text-align: left; padding: 18px 20px; font-size: 15px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; transition: background 0.2s; font-family: 'Inter', sans-serif; }
+  .faq-q:hover { background: rgba(255,255,255,0.03); }
+  .faq-q .arrow { transition: transform 0.3s; color: var(--red); font-size: 18px; flex-shrink: 0; }
+  .faq-item.open .faq-q .arrow { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s; font-size: 14px; color: #BBBBBB; line-height: 1.65; padding: 0 20px; }
+  .faq-item.open .faq-a { max-height: 200px; padding: 0 20px 18px; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--dark); border-top: 1px solid var(--border); padding: 56px 24px 32px; }
+  .footer-inner { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+  .footer-brand p { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-top: 14px; max-width: 280px; }
+  .footer-contact { margin-top: 18px; display: flex; flex-direction: column; gap: 8px; }
+  .footer-contact a { display: flex; align-items: center; gap: 8px; color: #BBBBBB; font-size: 13.5px; text-decoration: none; transition: color 0.2s; }
+  .footer-contact a:hover { color: var(--white); }
+  .footer-col h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); margin-bottom: 18px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul a { color: var(--muted); text-decoration: none; font-size: 13.5px; transition: color 0.2s; }
+  .footer-col ul a:hover { color: var(--white); }
+  .footer-bottom { max-width: 1200px; margin: auto; padding-top: 28px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom p { font-size: 12.5px; color: var(--muted); }
+  .footer-disclaimer { max-width: 1200px; margin: 16px auto 0; font-size: 11.5px; color: #555; line-height: 1.6; }
+
+  /* ── FLOAT BUTTON ── */
+  .float-cta {
+    position: fixed; bottom: 24px; right: 24px;
+    background: var(--red); color: var(--white);
+    padding: 14px 22px; border-radius: 50px;
+    font-weight: 700; font-size: 14px; border: none;
+    display: flex; align-items: center; gap: 8px;
+    box-shadow: 0 4px 28px rgba(205,4,11,0.55);
+    z-index: 800; transition: all 0.2s; cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    animation: floatBounce 3s ease-in-out infinite;
+  }
+  .float-cta:hover { background: var(--red-light); transform: scale(1.05); box-shadow: 0 6px 36px rgba(205,4,11,0.7); }
+  @keyframes floatBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+  .float-pulse {
+    position: fixed; bottom: 56px; right: 29px;
+    width: 12px; height: 12px; background: #4CAF50;
+    border-radius: 50%; z-index: 801;
+    animation: pulse 1.8s ease-in-out infinite;
+    box-shadow: 0 0 0 0 rgba(76,175,80,0.6);
+  }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(76,175,80,0.6)} 70%{box-shadow:0 0 0 9px rgba(76,175,80,0)} 100%{box-shadow:0 0 0 0 rgba(76,175,80,0)} }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .nav-cta-wrap { display: block !important; }
+  }
+  @media (max-width: 600px) {
+    .hero { padding: 56px 16px 60px; }
+    .hero-stats { gap: 20px; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .float-cta .float-label { display: none; }
+    .float-cta { border-radius: 50%; width: 54px; height: 54px; padding: 0; justify-content: center; font-size: 22px; }
+    section { padding: 56px 16px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ POPUP ══════════════ -->
+<div class="popup-overlay" id="popup" role="dialog" aria-modal="true" aria-label="Contact Form">
+  <div class="popup-box">
+
+    <!-- Form view -->
+    <div id="popup-form-view">
+      <div class="popup-header">
+        <button class="popup-close" onclick="closePopup()" aria-label="Close">✕</button>
+        <div class="popup-header-badge">🔒 Authorized Verizon Dealer</div>
+        <h2>Get Your Best<br>Verizon Deal Today</h2>
+        <p>Free consultation — no pressure, no hidden fees</p>
+      </div>
+      <div class="popup-body">
+
+        <!-- Call block -->
+        <a href="tel:8886084966" class="popup-call-block">
+          <div class="popup-call-icon">📞</div>
+          <div>
+            <div class="popup-call-label">Call us directly</div>
+            <div class="popup-call-num">(888) 608-4966</div>
+            <div class="popup-call-sub">● Agents available 24/7</div>
+          </div>
+        </a>
+
+        <div class="popup-divider">or fill out the form below</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-name">First Name</label>
+            <input type="text" id="f-name" placeholder="Jane" autocomplete="given-name">
+          </div>
+          <div class="form-group">
+            <label for="f-lname">Last Name</label>
+            <input type="text" id="f-lname" placeholder="Smith" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-phone">Phone Number</label>
+            <input type="tel" id="f-phone" placeholder="(555) 000-0000" autocomplete="tel">
+          </div>
+          <div class="form-group">
+            <label for="f-email">Email Address</label>
+            <input type="email" id="f-email" placeholder="jane@email.com" autocomplete="email">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-zip">ZIP Code</label>
+            <input type="text" id="f-zip" placeholder="10001" maxlength="5">
+          </div>
+          <div class="form-group">
+            <label for="f-service">Interested In</label>
+            <select id="f-service">
+              <option value="">Select a service…</option>
+              <option>Home Internet</option>
+              <option>Mobile / Wireless</option>
+              <option>TV & Streaming</option>
+              <option>Home Phone</option>
+              <option>Bundle Deal</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="f-msg">Anything else? (optional)</label>
+            <textarea id="f-msg" placeholder="e.g. switching from AT&T, need 3 lines, budget under $100/mo…"></textarea>
+          </div>
+        </div>
+        <button class="form-submit" onclick="submitForm()">
+          🚀 Get My Free Quote
+        </button>
+        <p class="form-note">🔒 Your info is never sold or shared. A live agent will call you within 1 business hour.</p>
+      </div>
+    </div>
+
+    <!-- Success view -->
+    <div class="popup-success" id="popup-success-view">
+      <div class="success-icon">🎉</div>
+      <div class="success-title">You're All Set!</div>
+      <p class="success-sub">Thanks! One of our Verizon specialists will call you within <strong>1 business hour</strong> to go over the best deals available in your area.<br><br>Need something sooner? Call us directly at <strong>(888) 608-4966</strong>.</p>
+      <button class="success-close" onclick="closePopup()">Done</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Top Bar -->
+<div class="topbar">
+  🔥 Limited Time: Switch to Verizon & get up to <strong>$650 off</strong> a new phone. &nbsp;<a onclick="openPopup()" style="cursor:pointer;">Claim Deal →</a>
+</div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-badge">FB</span>
+      <span class="logo-text">Fast<span>Broadbands</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#plans">Plans</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="verizon.html" style="color:#FF6B6B; font-weight:600;">Verizon Deals</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><button class="nav-cta" onclick="openPopup()">📋 Get a Free Quote</button></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Authorized Verizon Retailer</div>
+      <h1>America's Most<br><span class="accent">Reliable Network</span><br>— Better Deals.</h1>
+      <p class="hero-sub">Shop Verizon Internet, Mobile, TV, and Home Phone through a licensed dealer. Real agents. Honest pricing. Zero runaround.</p>
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="openPopup()">📋 Get a Free Quote</button>
+        <a href="verizon.html" class="btn-secondary">⚡ Verizon Deals →</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">$45<span>/mo</span></div>
+          <div class="hero-stat-label">Plans Starting At</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">24<span>/7</span></div>
+          <div class="hero-stat-label">Live Agent Support</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">30<span>-day</span></div>
+          <div class="hero-stat-label">Money-Back</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero card -->
+    <div>
+      <div class="hero-card">
+        <div class="hero-card-tag">🔥 Best Value</div>
+        <h3>Verizon Home Internet</h3>
+        <div class="hero-card-price"><sup>$</sup>35<sub>/mo for 24 mos</sub></div>
+        <p class="hero-card-note">Auto-pay & paperless billing required</p>
+        <ul class="hero-card-features">
+          <li>Fast speeds up to 300 Mbps</li>
+          <li>No annual contracts</li>
+          <li>No data caps or throttling</li>
+          <li>Free professional installation</li>
+          <li>24/7 tech support included</li>
+        </ul>
+        <button class="hero-card-btn" onclick="openPopup()">🚀 Claim This Deal</button>
+        <hr class="hero-card-divider">
+        <div class="hero-card-footer">🔒 Authorized Dealer &nbsp;·&nbsp; Official Verizon Pricing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust bar -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-icon">✅</span> Authorized Verizon Retailer</div>
+    <div class="trust-item"><span class="trust-icon">📞</span> Live Agents 24/7</div>
+    <div class="trust-item"><span class="trust-icon">💸</span> No Hidden Fees</div>
+    <div class="trust-item"><span class="trust-icon">🔒</span> Secure Ordering</div>
+    <div class="trust-item"><span class="trust-icon">🎁</span> Exclusive Dealer Discounts</div>
+  </div>
+</div>
+
+<!-- Plans -->
+<section class="plans-section" id="plans">
+  <div class="section-inner">
+    <div class="section-eyebrow">Verizon Plans</div>
+    <h2 class="section-title">Plans for Every Home</h2>
+    <p class="section-sub">All plans include professional setup, 24/7 support, and no annual commitment required.</p>
+    <div class="plans-tabs">
+      <button class="tab-btn active" onclick="filterPlans(this,'internet')">🏠 Home Internet</button>
+      <button class="tab-btn" onclick="filterPlans(this,'mobile')">📱 Mobile</button>
+      <button class="tab-btn" onclick="filterPlans(this,'bundle')">📦 Bundles</button>
+      <button class="tab-btn" onclick="filterPlans(this,'tv')">📺 TV & Streaming</button>
+    </div>
+    <div class="plans-grid" id="plans-grid">
+      <div class="plan-card" data-type="internet">
+        <div class="plan-name">Essential</div>
+        <div class="plan-tagline">For light browsing & email</div>
+        <div class="plan-price"><sup>$</sup>35</div>
+        <div class="plan-price-note">/mo for 24 mos. w/ Auto Pay</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Up to 300 Mbps download</li>
+          <li><span class="check">✓</span> No data caps</li>
+          <li><span class="check">✓</span> Free installation</li>
+          <li><span class="x">✗</span> No 5G Home option</li>
+          <li><span class="x">✗</span> No premium router</li>
+        </ul>
+        <hr class="plan-divider">
+        <button class="plan-btn plan-btn-outline" onclick="openPopupWithPlan('Essential Home Internet')">Order Now</button>
+        <p class="plan-speed">300 Mbps down / 50 Mbps up</p>
+      </div>
+      <div class="plan-card featured" data-type="internet">
+        <div class="plan-badge">⭐ Most Popular</div>
+        <div class="plan-name">Plus</div>
+        <div class="plan-tagline">Perfect for streaming & WFH</div>
+        <div class="plan-price"><sup>$</sup>55</div>
+        <div class="plan-price-note">/mo for 24 mos. w/ Auto Pay</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Up to 1 Gbps download</li>
+          <li><span class="check">✓</span> No data caps</li>
+          <li><span class="check">✓</span> Free installation + router</li>
+          <li><span class="check">✓</span> 5G Home backup included</li>
+          <li><span class="x">✗</span> No Wi-Fi 6E router</li>
+        </ul>
+        <hr class="plan-divider">
+        <button class="plan-btn plan-btn-solid" onclick="openPopupWithPlan('Plus Home Internet')">Get This Plan</button>
+        <p class="plan-speed">1,000 Mbps down / 500 Mbps up</p>
+      </div>
+      <div class="plan-card" data-type="internet">
+        <div class="plan-name">Ultra</div>
+        <div class="plan-tagline">For power users & smart homes</div>
+        <div class="plan-price"><sup>$</sup>80</div>
+        <div class="plan-price-note">/mo for 24 mos. w/ Auto Pay</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Up to 2 Gbps download</li>
+          <li><span class="check">✓</span> No data caps</li>
+          <li><span class="check">✓</span> Wi-Fi 6E router included</li>
+          <li><span class="check">✓</span> 5G Home backup included</li>
+          <li><span class="check">✓</span> Priority network support</li>
+        </ul>
+        <hr class="plan-divider">
+        <button class="plan-btn plan-btn-outline" onclick="openPopupWithPlan('Ultra Home Internet')">Order Now</button>
+        <p class="plan-speed">2,000 Mbps down / 1,000 Mbps up</p>
+      </div>
+
+      <div class="plan-card" data-type="mobile" style="display:none;">
+        <div class="plan-name">Start Unlimited</div>
+        <div class="plan-tagline">Essentials without the extras</div>
+        <div class="plan-price"><sup>$</sup>45</div>
+        <div class="plan-price-note">/line/mo for 4 lines</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Unlimited talk, text & data</li>
+          <li><span class="check">✓</span> 5G Nationwide access</li>
+          <li><span class="x">✗</span> No 5G Ultra Wideband</li>
+          <li><span class="x">✗</span> No premium streaming</li>
+        </ul>
+        <hr class="plan-divider">
+        <button class="plan-btn plan-btn-outline" onclick="openPopupWithPlan('Start Unlimited Mobile')">Order Now</button>
+      </div>
+      <div class="plan-card featured" data-type="mobile" style="display:none;">
+        <div class="plan-badge">⭐ Most Popular</div>
+        <div class="plan-name">Play More</div>
+        <div class="plan-tagline">Stream, game, browse at full speed</div>
+        <div class="plan-price"><sup>$</sup>55</div>
+        <div class="plan-price-note">/line/mo for 4 lines</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Unlimited + 5G Ultra Wideband</li>
+          <li><span class="check">✓</span> Disney+, Hulu & ESPN+</li>
+          <li><span class="check">✓</span> Apple Arcade or Google Play Pass</li>
+          <li><span class="check">✓</span> 50 GB premium mobile hotspot</li>
+        </ul>
+        <hr class="plan-divider">
+        <button class="plan-btn plan-btn-solid" onclick="openPopupWithPlan('Play More Mobile')">Get This Plan</button>
+      </div>
+      <div class="plan-card" data-type="mobile" style="display:none;">
+        <div class="plan-name">Get More</div>
+        <div class="plan-tagline">The best of everything Verizon</div>
+        <div class="plan-price"><sup>$</sup>65</div>
+        <div class="plan-price-note">/line/mo for 4 lines</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> All Play More features</li>
+          <li><span class="check">✓</span> Apple One or Google One 200GB</li>
+          <li><span class="check">✓</span> Apple Watch included</li>
+          <li><span class="check">✓</span> 100 GB premium hotspot</li>
+        </ul>
+        <hr class="plan-divider">
+        <button class="plan-btn plan-btn-outline" onclick="openPopupWithPlan('Get More Mobile')">Order Now</button>
+      </div>
+
+      <div class="plan-card" data-type="bundle" style="display:none;">
+        <div class="plan-name">Home + Mobile</div>
+        <div class="plan-tagline">Internet & one mobile line</div>
+        <div class="plan-price"><sup>$</sup>75</div>
+        <div class="plan-price-note">/mo for 24 mos. + mobile</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> 1 Gbps Home Internet</li>
+          <li><span class="check">✓</span> 1 unlimited mobile line</li>
+          <li><span class="check">✓</span> $10/mo savings vs. separate</li>
+          <li><span class="check">✓</span> One bill, one account</li>
+        </ul>
+        <hr class="plan-divider">
+        <button class="plan-btn plan-btn-solid" onclick="openPopupWithPlan('Home + Mobile Bundle')">Bundle & Save</button>
+      </div>
+      <div class="plan-card featured" data-type="bundle" style="display:none;">
+        <div class="plan-badge">💰 Best Savings</div>
+        <div class="plan-name">Family Bundle</div>
+        <div class="plan-tagline">Internet + 4 mobile lines</div>
+        <div class="plan-price"><sup>$</sup>130</div>
+        <div class="plan-price-note">/mo total w/ Auto Pay</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> 1 Gbps Home Internet</li>
+          <li><span class="check">✓</span> 4 unlimited mobile lines</li>
+          <li><span class="check">✓</span> $25/mo savings bundled</li>
+          <li><span class="check">✓</span> Disney+ subscription free</li>
+          <li><span class="check">✓</span> Priority customer support</li>
+        </ul>
+        <hr class="plan-divider">
+        <button class="plan-btn plan-btn-solid" onclick="openPopupWithPlan('Family Bundle')">Call to Bundle</button>
+      </div>
+
+      <div class="plan-card" data-type="tv" style="display:none;">
+        <div class="plan-name">Fios TV Select</div>
+        <div class="plan-tagline">125+ channels of live TV</div>
+        <div class="plan-price"><sup>$</sup>55</div>
+        <div class="plan-price-note">/mo for 24 mos.</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> 125+ live channels</li>
+          <li><span class="check">✓</span> Cloud DVR included</li>
+          <li><span class="check">✓</span> 4K streaming ready</li>
+          <li><span class="x">✗</span> No premium channels</li>
+        </ul>
+        <hr class="plan-divider">
+        <button class="plan-btn plan-btn-outline" onclick="openPopupWithPlan('Fios TV Select')">Order Now</button>
+      </div>
+      <div class="plan-card featured" data-type="tv" style="display:none;">
+        <div class="plan-badge">⭐ Best TV Deal</div>
+        <div class="plan-name">Fios TV Ultimate</div>
+        <div class="plan-tagline">425+ channels including premium</div>
+        <div class="plan-price"><sup>$</sup>90</div>
+        <div class="plan-price-note">/mo for 24 mos.</div>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> 425+ live channels</li>
+          <li><span class="check">✓</span> HBO Max, Showtime, Starz</li>
+          <li><span class="check">✓</span> Unlimited cloud DVR</li>
+          <li><span class="check">✓</span> Multi-room streaming</li>
+        </ul>
+        <hr class="plan-divider">
+        <button class="plan-btn plan-btn-solid" onclick="openPopupWithPlan('Fios TV Ultimate')">Get This Plan</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services-strip" id="services">
+  <div class="section-inner">
+    <div class="section-eyebrow">What We Offer</div>
+    <h2 class="section-title">All Verizon Services</h2>
+    <p class="section-sub">One trusted dealer for your entire connected home.</p>
+    <div class="services-grid">
+      <div class="service-card" onclick="openPopupWithPlan('Home Internet')">
+        <div class="service-icon">🌐</div>
+        <div class="service-name">Home Internet</div>
+        <div class="service-desc">Fiber & 5G home internet with speeds up to 2 Gbps. No contracts required.</div>
+        <span class="service-arrow">Get a quote →</span>
+      </div>
+      <div class="service-card" onclick="openPopupWithPlan('Mobile / Wireless')">
+        <div class="service-icon">📱</div>
+        <div class="service-name">Mobile / Wireless</div>
+        <div class="service-desc">Unlimited plans on America's most reliable 5G network. Family discounts available.</div>
+        <span class="service-arrow">Get a quote →</span>
+      </div>
+      <div class="service-card" onclick="openPopupWithPlan('TV & Streaming')">
+        <div class="service-icon">📺</div>
+        <div class="service-name">TV & Streaming</div>
+        <div class="service-desc">Fios TV with 425+ channels, cloud DVR, and premium add-ons starting at $55/mo.</div>
+        <span class="service-arrow">Get a quote →</span>
+      </div>
+      <div class="service-card" onclick="openPopupWithPlan('Home Phone')">
+        <div class="service-icon">☎️</div>
+        <div class="service-name">Home Phone</div>
+        <div class="service-desc">Reliable digital home phone with unlimited domestic calling included.</div>
+        <span class="service-arrow">Get a quote →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Us -->
+<section class="why-section" id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div>
+        <div class="section-eyebrow">Why FastBroadbands</div>
+        <h2 class="section-title">We Work for You,<br>Not the Carrier</h2>
+        <p class="section-sub">As an authorized Verizon dealer, we get you the same plans and pricing — plus the personal service that big call centers can't offer.</p>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-num">01</div>
+            <div class="why-content">
+              <h4>Official Verizon Pricing, Guaranteed</h4>
+              <p>We are an authorized retailer. Every price you see is the actual Verizon rate — no markups, no tricks.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">02</div>
+            <div class="why-content">
+              <h4>Real Humans, Not Bots</h4>
+              <p>Call anytime, day or night. You'll always reach a live, knowledgeable agent who can place your order on the spot.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">03</div>
+            <div class="why-content">
+              <h4>Exclusive Dealer Promotions</h4>
+              <p>We often have access to limited-time offers and bundle discounts not available directly from Verizon's website.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">04</div>
+            <div class="why-content">
+              <h4>30-Day Money-Back Satisfaction</h4>
+              <p>Not happy? Cancel within 30 days for a full refund. No questions, no penalties.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="why-visual">
+          <div class="why-visual-title">Customer Ratings</div>
+          <div class="rating-row">
+            <div class="rating-label">Network Reliability</div>
+            <div class="rating-bar-wrap"><div class="rating-bar" style="width:96%"></div></div>
+            <div class="rating-val">4.8★</div>
+          </div>
+          <div class="rating-row">
+            <div class="rating-label">Customer Service</div>
+            <div class="rating-bar-wrap"><div class="rating-bar" style="width:90%"></div></div>
+            <div class="rating-val">4.5★</div>
+          </div>
+          <div class="rating-row">
+            <div class="rating-label">Value for Price</div>
+            <div class="rating-bar-wrap"><div class="rating-bar" style="width:88%"></div></div>
+            <div class="rating-val">4.4★</div>
+          </div>
+          <div class="rating-row">
+            <div class="rating-label">Ease of Setup</div>
+            <div class="rating-bar-wrap"><div class="rating-bar" style="width:93%"></div></div>
+            <div class="rating-val">4.7★</div>
+          </div>
+          <div class="cert-badge">
+            <div class="cert-badge-icon">🏅</div>
+            <div class="cert-badge-text">
+              <strong>Authorized Verizon Retailer</strong>
+              <span>Certified Authorized Verizon Dealer</span>
+            </div>
+          </div>
+          <div class="cert-badge">
+            <div class="cert-badge-icon">🔐</div>
+            <div class="cert-badge-text">
+              <strong>Secure & Verified</strong>
+              <span>Your personal data is never sold or shared</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Promo -->
+<div class="promo-section">
+  <h2>Ready to Switch? We'll Make It Easy.</h2>
+  <p>Call our team — we'll compare your current bill and find you a better plan in minutes.</p>
+  <div class="promo-ctas">
+    <button class="btn-white" onclick="openPopup()">📋 Get My Free Quote</button>
+    <a href="tel:8886084966" class="btn-outline-white">📞 (888) 608-4966</a>
+  </div>
+</div>
+
+<!-- How it Works -->
+<section class="how-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Simple Process</div>
+    <h2 class="section-title">Get Connected in 4 Steps</h2>
+    <p class="section-sub">Our agents handle everything — from picking the right plan to scheduling your installation.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-icon">📋</div>
+        <div class="step-title">Request a Quote</div>
+        <div class="step-desc">Fill out the quick form or call our 24/7 line. Takes under 60 seconds.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-icon">📞</div>
+        <div class="step-title">Agent Calls You</div>
+        <div class="step-desc">A live Verizon specialist calls within 1 hour to go over the best options for your address.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-icon">✅</div>
+        <div class="step-title">Pick Your Plan</div>
+        <div class="step-desc">We compare and confirm all pricing before you commit. No surprises.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="step-icon">🔧</div>
+        <div class="step-title">Get Installed</div>
+        <div class="step-desc">A technician sets everything up — usually within 2–3 business days.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <div class="section-eyebrow" style="text-align:center;">FAQ</div>
+    <h2 class="section-title" style="text-align:center;">Common Questions</h2>
+    <p class="section-sub" style="text-align:center; margin: 0 auto 40px;">Everything you need to know before you sign up.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is FastBroadbands an official Verizon dealer?<span class="arrow">+</span></button>
+        <div class="faq-a">Yes. FastBroadbands is an authorized Verizon retailer. All plans, pricing, and service terms are identical to those offered directly by Verizon.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Will I pay more by ordering through FastBroadbands?<span class="arrow">+</span></button>
+        <div class="faq-a">No. As an authorized dealer, we offer the exact same official Verizon pricing. In many cases we have access to exclusive promotions and bundle deals that may save you more than ordering directly.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Are there any contracts or early termination fees?<span class="arrow">+</span></button>
+        <div class="faq-a">Most Verizon plans are contract-free. Some promotional pricing may require a 24-month agreement — our agents will clearly explain all terms before you commit.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How quickly can I get service installed?<span class="arrow">+</span></button>
+        <div class="faq-a">Most customers can schedule installation within 2–3 business days of ordering. In many metro areas, same-week installation is available. Our agents will confirm at your address when you call.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What if I need to cancel?<span class="arrow">+</span></button>
+        <div class="faq-a">We offer a 30-day satisfaction guarantee. If you're not happy in the first 30 days, contact our team and we'll help you cancel without penalty. Standard Verizon cancellation policies apply after that period.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I keep my current phone number?<span class="arrow">+</span></button>
+        <div class="faq-a">Absolutely. Mobile number porting is free and our agents handle the entire transfer. You typically keep your number active throughout the switch with zero downtime.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <span class="logo-badge">FB</span>
+        <span class="logo-text">Fast<span>Broadbands</span></span>
+      </a>
+      <p>An authorized Verizon retailer helping customers across the US find the right plan at the right price. We are not Verizon — we're your advocate inside the system.</p>
+      <div class="footer-contact">
+        <a href="tel:8886084966">📞 (888) 608-4966 — 24/7</a>
+        <a href="mailto:support@fastbroadbands.us">✉️ support@fastbroadbands.us</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#plans">Home Internet</a></li>
+        <li><a href="#plans">Mobile Plans</a></li>
+        <li><a href="#plans">TV & Streaming</a></li>
+        <li><a href="#plans">Home Phone</a></li>
+        <li><a href="#plans">Bundle Deals</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#why">About Us</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#">Coverage Map</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Dealer Agreement</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 FastBroadbands. All rights reserved.</p>
+    <p>Authorized Verizon Dealer · Not affiliated with Verizon Communications Inc.</p>
+  </div>
+  <div class="footer-disclaimer">
+    Pricing shown reflects promotional rates with Auto Pay and paperless billing. Taxes and fees not included. Plan availability subject to location. FastBroadbands is an independent authorized dealer; Verizon is a registered trademark of Verizon Communications Inc.
+  </div>
+</footer>
+
+<!-- Float pulse dot -->
+<div class="float-pulse"></div>
+
+<!-- Float CTA button -->
+<button class="float-cta" onclick="openPopup()" aria-label="Get a Free Quote">
+  📋 <span class="float-label">Free Quote</span>
+</button>
+
+<script>
+/* ── POPUP ── */
+function openPopup() {
+  document.getElementById('popup').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function openPopupWithPlan(planName) {
+  openPopup();
+  const sel = document.getElementById('f-service');
+  if (!sel) return;
+  const map = {
+    'Home Internet': 'Home Internet',
+    'Essential Home Internet': 'Home Internet',
+    'Plus Home Internet': 'Home Internet',
+    'Ultra Home Internet': 'Home Internet',
+    'Mobile / Wireless': 'Mobile / Wireless',
+    'Start Unlimited Mobile': 'Mobile / Wireless',
+    'Play More Mobile': 'Mobile / Wireless',
+    'Get More Mobile': 'Mobile / Wireless',
+    'TV & Streaming': 'TV & Streaming',
+    'Fios TV Select': 'TV & Streaming',
+    'Fios TV Ultimate': 'TV & Streaming',
+    'Home Phone': 'Home Phone',
+    'Home + Mobile Bundle': 'Bundle Deal',
+    'Family Bundle': 'Bundle Deal',
+  };
+  const match = map[planName] || '';
+  for (let i = 0; i < sel.options.length; i++) {
+    if (sel.options[i].text === match) { sel.selectedIndex = i; break; }
+  }
+}
+function closePopup() {
+  document.getElementById('popup').classList.remove('active');
+  document.body.style.overflow = '';
+  // Reset form view after close
+  setTimeout(() => {
+    document.getElementById('popup-form-view').style.display = '';
+    document.getElementById('popup-success-view').classList.remove('active');
+  }, 300);
+}
+// Close on overlay click
+document.getElementById('popup').addEventListener('click', function(e) {
+  if (e.target === this) closePopup();
+});
+// Close on Escape
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+/* ── FORM SUBMIT ── */
+function submitForm() {
+  const name = document.getElementById('f-name').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  if (!name) { document.getElementById('f-name').focus(); return; }
+  if (!phone) { document.getElementById('f-phone').focus(); return; }
+  document.getElementById('popup-form-view').style.display = 'none';
+  document.getElementById('popup-success-view').classList.add('active');
+}
+
+/* ── PLANS TABS ── */
+function filterPlans(btn, type) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.plan-card').forEach(card => {
+    card.style.display = card.dataset.type === type ? '' : 'none';
+  });
+}
+
+/* ── FAQ ── */
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── SCROLL REVEAL ── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.plan-card, .service-card, .step-card, .why-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(18px)';
+  el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
