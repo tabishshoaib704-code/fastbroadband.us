@@ -1268,8 +1268,26 @@ document.querySelectorAll('.plan-card, .service-card, .step-card, .why-item').fo
   window.vzClose = vzClose;
   document.getElementById("vzPopup").addEventListener("click", function(e){ if(e.target===this) vzClose(); });
   document.addEventListener("keydown", function(e){ if(e.key==="Escape") vzClose(); });
-  if(!sessionStorage.getItem("vzShown")){
-    setTimeout(function(){ vzOpen(); sessionStorage.setItem("vzShown","1"); }, 1800);
+  // Mobile-only: only show on screens <= 768px wide
+  function isMobile(){ return window.innerWidth <= 768; }
+  function vzSchedule(){
+    if(isMobile()){
+      setTimeout(function(){
+        vzOpen();
+        // Re-schedule to reopen 5s after it's closed
+      }, 5000);
+    }
+  }
+  // Override vzClose to reschedule after close
+  var _origClose = vzClose;
+  window.vzClose = function(){
+    _origClose();
+    vzSchedule();
+  };
+  // Also reschedule when overlay is clicked (already calls vzClose via override)
+  // Initial trigger after 1.8s on mobile only
+  if(isMobile()){
+    setTimeout(function(){ vzOpen(); }, 1800);
   }
 })();
 </script>
