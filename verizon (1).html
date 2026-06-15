@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verizon Deals — FastBroadbands.us | Authorized Retailer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #CD040B;
+    --red-dark: #A3030B;
+    --red-light: #FF1A23;
+    --black: #0A0A0A;
+    --dark: #111111;
+    --card: #1A1A1A;
+    --border: #2A2A2A;
+    --muted: #888888;
+    --white: #FFFFFF;
+    --green: #22C55E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--white); line-height: 1.6; }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--dark); border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 500;
+  }
+  .nav-inner {
+    max-width: 1100px; margin: auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between; height: 60px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-badge { background: var(--red); color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 20px; letter-spacing: 0.04em; padding: 3px 9px 2px; border-radius: 4px; }
+  .logo-text { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18px; color: var(--white); }
+  .logo-text span { color: var(--red); }
+  .nav-back { display: flex; align-items: center; gap: 6px; color: #AAAAAA; text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+  .nav-back:hover { color: var(--white); }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, #0A0A0A 0%, #1C0000 45%, #0A0A0A 100%);
+    padding: 0 24px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(205,4,11,0.22) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(205,4,11,0.10) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: auto;
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px; align-items: center;
+    padding: 70px 0 80px;
+  }
+
+  /* Left */
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(205,4,11,0.12); border: 1px solid rgba(205,4,11,0.3);
+    color: #FF7A7A; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 5px 13px; border-radius: 100px; margin-bottom: 18px;
+  }
+  .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: blink 1.5s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: clamp(46px, 6vw, 76px); line-height: 0.95;
+    text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 18px;
+  }
+  .hero h1 .red { color: var(--red); }
+  .hero h1 .dim { color: #555; font-size: 0.65em; display: block; margin-bottom: 4px; letter-spacing: 0.04em; }
+
+  .hero-sub { font-size: 16px; color: #BBBBBB; line-height: 1.7; margin-bottom: 30px; max-width: 480px; }
+
+  .trust-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .trust-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+    border-radius: 100px; padding: 5px 13px;
+    font-size: 12px; font-weight: 500; color: #CCCCCC;
+  }
+
+  .hero-call {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(205,4,11,0.1); border: 1px solid rgba(205,4,11,0.3);
+    border-radius: 10px; padding: 14px 20px; text-decoration: none;
+    transition: background 0.2s; margin-top: 8px;
+  }
+  .hero-call:hover { background: rgba(205,4,11,0.2); }
+  .hero-call-icon { font-size: 24px; }
+  .hero-call-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
+  .hero-call-num { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 800; color: var(--white); }
+  .hero-call-live { font-size: 11px; color: var(--green); font-weight: 600; display: flex; align-items: center; gap: 4px; }
+  .hero-call-live::before { content: ''; width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: blink 1.5s ease-in-out infinite; }
+
+  /* ── LEAD FORM CARD ── */
+  .form-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  }
+  .form-card-header {
+    background: linear-gradient(135deg, var(--red-dark), var(--red));
+    padding: 22px 28px;
+  }
+  .form-card-header h2 {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+    font-size: 24px; text-transform: uppercase; letter-spacing: 0.01em; margin-bottom: 4px;
+  }
+  .form-card-header p { font-size: 13px; opacity: 0.85; }
+  .form-card-body { padding: 26px 28px; }
+
+  .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .frow.single { grid-template-columns: 1fr; }
+  .fg { display: flex; flex-direction: column; gap: 5px; }
+  .fg label { font-size: 11.5px; font-weight: 600; color: #AAAAAA; letter-spacing: 0.04em; text-transform: uppercase; }
+  .fg input, .fg select, .fg textarea {
+    background: #0D0D0D; border: 1px solid var(--border); border-radius: 8px;
+    color: var(--white); font-size: 14px; padding: 10px 13px;
+    font-family: 'Inter', sans-serif; transition: border-color 0.2s; outline: none; width: 100%;
+  }
+  .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--red); }
+  .fg select option { background: #111; }
+  .fg textarea { resize: vertical; min-height: 70px; }
+
+  .form-submit-btn {
+    width: 100%; margin-top: 6px;
+    background: var(--red); border: none; color: var(--white);
+    font-size: 16px; font-weight: 700; padding: 15px;
+    border-radius: 10px; cursor: pointer; font-family: 'Inter', sans-serif;
+    transition: background 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .form-submit-btn:hover { background: var(--red-light); }
+  .form-note { font-size: 11.5px; color: var(--muted); text-align: center; margin-top: 10px; }
+
+  /* success */
+  .form-success { display: none; padding: 40px 28px; text-align: center; }
+  .form-success.active { display: block; }
+  .form-success-icon { font-size: 52px; margin-bottom: 14px; }
+  .form-success-title { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; }
+  .form-success-sub { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
+  .form-success-call { display: inline-flex; align-items: center; gap: 8px; background: var(--red); color: var(--white); padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; }
+
+  /* ── STAT STRIP ── */
+  .stat-strip { background: #0D0D0D; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 28px 24px; }
+  .stat-inner { max-width: 1100px; margin: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .stat-item { text-align: center; padding: 12px 16px; border-right: 1px solid var(--border); }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 38px; font-weight: 900; line-height: 1; color: var(--white); }
+  .stat-num span { color: var(--red); }
+  .stat-label { font-size: 12px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
+
+  /* ── WHY VERIZON ── */
+  .section { padding: 72px 24px; }
+  .section-inner { max-width: 1100px; margin: auto; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+  .sec-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 12px; }
+  .sec-sub { color: var(--muted); font-size: 15px; line-height: 1.7; max-width: 520px; margin-bottom: 44px; }
+
+  .perks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .perk-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 26px 22px; transition: border-color 0.2s, transform 0.2s;
+  }
+  .perk-card:hover { border-color: rgba(205,4,11,0.4); transform: translateY(-2px); }
+  .perk-icon { font-size: 32px; margin-bottom: 14px; }
+  .perk-title { font-size: 15px; font-weight: 700; margin-bottom: 7px; }
+  .perk-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── PLANS PREVIEW ── */
+  .plans-bg { background: #0D0D0D; }
+  .plans-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .plan-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    padding: 26px 22px; position: relative; transition: border-color 0.2s;
+  }
+  .plan-card.hot { border-color: var(--red); background: linear-gradient(160deg, #1C0000 0%, var(--card) 65%); }
+  .plan-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--red); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; padding: 3px 13px; border-radius: 100px; white-space: nowrap; }
+  .plan-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; text-transform: uppercase; margin-bottom: 4px; }
+  .plan-tag { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+  .plan-price { font-family: 'Barlow Condensed', sans-serif; font-size: 44px; font-weight: 900; line-height: 1; }
+  .plan-price sup { font-size: 20px; vertical-align: top; margin-top: 7px; display: inline-block; }
+  .plan-mo { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: var(--muted); }
+  .plan-note { font-size: 11px; color: var(--muted); margin: 4px 0 16px; }
+  .plan-feats { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+  .plan-feats li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: #CCCCCC; }
+  .plan-feats li .ck { color: var(--green); flex-shrink: 0; }
+  hr.pd { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+  .plan-cta {
+    width: 100%; padding: 11px; border-radius: 8px; font-weight: 700; font-size: 14px;
+    cursor: pointer; font-family: 'Inter', sans-serif; border: none; transition: all 0.2s;
+  }
+  .plan-cta.solid { background: var(--red); color: var(--white); }
+  .plan-cta.solid:hover { background: var(--red-light); }
+  .plan-cta.outline { background: transparent; color: var(--white); border: 2px solid var(--border); }
+  .plan-cta.outline:hover { border-color: #555; background: rgba(255,255,255,0.04); }
+
+  /* ── TESTIMONIALS ── */
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
+  .testi-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 24px 22px; }
+  .testi-stars { color: #F5A623; font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
+  .testi-text { font-size: 14px; color: #CCCCCC; line-height: 1.65; margin-bottom: 16px; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 10px; }
+  .testi-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--red); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+  .testi-name { font-size: 13.5px; font-weight: 700; }
+  .testi-loc { font-size: 12px; color: var(--muted); }
+
+  /* ── STICKY BOTTOM BAR (mobile) ── */
+  .sticky-bar {
+    display: none;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--dark); border-top: 1px solid var(--border);
+    padding: 12px 16px; z-index: 600;
+    flex-direction: column; gap: 8px;
+  }
+  .sticky-bar-ctas { display: flex; gap: 10px; }
+  .sticky-bar-ctas a, .sticky-bar-ctas button {
+    flex: 1; padding: 12px; border-radius: 8px; font-weight: 700;
+    font-size: 14px; text-align: center; border: none; cursor: pointer;
+    font-family: 'Inter', sans-serif; text-decoration: none;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .sticky-call { background: var(--red); color: var(--white); }
+  .sticky-form { background: transparent; color: var(--white); border: 2px solid var(--border) !important; }
+  .sticky-note { font-size: 11px; color: var(--muted); text-align: center; }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    background: linear-gradient(135deg, var(--red-dark), var(--red));
+    padding: 64px 24px; text-align: center;
+  }
+  .cta-section h2 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(30px, 5vw, 52px); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 10px; }
+  .cta-section p { font-size: 16px; opacity: 0.88; margin-bottom: 28px; }
+  .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-w { background: var(--white); color: var(--red); padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; }
+  .btn-w:hover { opacity: 0.92; transform: translateY(-1px); }
+  .btn-ow { border: 2px solid rgba(255,255,255,0.5); color: var(--white); padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; }
+  .btn-ow:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--dark); border-top: 1px solid var(--border); padding: 32px 24px; }
+  .footer-inner { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-inner p { font-size: 12.5px; color: var(--muted); }
+  .footer-disclaimer { max-width: 1100px; margin: 14px auto 0; font-size: 11.5px; color: #444; line-height: 1.6; padding: 0 24px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; padding: 50px 0 60px; gap: 36px; }
+    .stat-inner { grid-template-columns: repeat(2,1fr); }
+    .stat-item:nth-child(2) { border-right: none; }
+    .sticky-bar { display: flex; }
+    body { padding-bottom: 90px; }
+  }
+  @media (max-width: 540px) {
+    .frow { grid-template-columns: 1fr; }
+    .stat-inner { grid-template-columns: repeat(2,1fr); }
+  }
+
+  /* ── VZ CALL POPUP ── */
+  .vz-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.82);
+    z-index: 99999;
+    align-items: center; justify-content: center;
+    padding: 16px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .vz-overlay.active { display: flex; }
+  .vz-box {
+    background: #fff; border-radius: 22px;
+    width: 100%; max-width: 420px;
+    overflow: hidden; position: relative;
+    animation: vzPop 0.32s cubic-bezier(.34,1.56,.64,1);
+    box-shadow: 0 32px 100px rgba(0,0,0,0.7);
+  }
+  @keyframes vzPop {
+    from { opacity:0; transform:scale(0.82) translateY(24px); }
+    to   { opacity:1; transform:scale(1) translateY(0); }
+  }
+  .vz-close {
+    position: absolute; top: 12px; right: 14px;
+    background: rgba(0,0,0,0.08); border: none;
+    width: 32px; height: 32px; border-radius: 50%;
+    font-size: 17px; cursor: pointer; color: #333;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s; z-index: 2;
+  }
+  .vz-close:hover { background: rgba(0,0,0,0.16); }
+  .vz-top {
+    background: #CD040B;
+    padding: 28px 28px 22px;
+    text-align: center;
+  }
+  .vz-logo-wrap {
+    background: #fff;
+    border-radius: 12px;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 10px 20px; margin-bottom: 16px;
+  }
+  .vz-logo-svg { width: 140px; height: auto; display: block; }
+  .vz-top-title {
+    color: #fff;
+    font-family: "Barlow Condensed", "Inter", sans-serif;
+    font-weight: 900; font-size: 26px;
+    text-transform: uppercase; letter-spacing: 0.01em;
+    line-height: 1.1; margin-bottom: 6px;
+  }
+  .vz-top-sub { color: rgba(255,255,255,0.85); font-size: 13.5px; }
+  .vz-body { padding: 26px 28px 28px; text-align: center; background: #fff; }
+  .vz-body-label { font-size: 13px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
+  .vz-call-btn {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    background: #CD040B; color: #fff;
+    border-radius: 12px; padding: 18px 24px;
+    text-decoration: none; font-weight: 800; font-size: 22px;
+    letter-spacing: 0.01em; transition: background 0.2s, transform 0.15s;
+    margin-bottom: 10px;
+    font-family: "Barlow Condensed", "Inter", sans-serif;
+  }
+  .vz-call-btn:hover { background: #FF1A23; transform: translateY(-2px); }
+  .vz-call-btn .vz-phone-icon { font-size: 26px; }
+  .vz-call-alt {
+    display: block; margin-top: 6px;
+    color: #CD040B; font-weight: 700; font-size: 15px;
+    text-decoration: none; letter-spacing: 0.02em;
+  }
+  .vz-call-alt:hover { text-decoration: underline; }
+  .vz-live { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 14px; font-size: 12.5px; color: #666; }
+  .vz-live-dot { width: 8px; height: 8px; background: #22C55E; border-radius: 50%; animation: vzPulse 1.6s ease-in-out infinite; }
+  @keyframes vzPulse { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.5)} 60%{box-shadow:0 0 0 7px rgba(34,197,94,0)} }
+  .vz-disclaimer { font-size: 10.5px; color: #aaa; margin-top: 12px; line-height: 1.5; }
+
+  /* ── QUOTE FORM POPUP ── */
+  .qp-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.80);
+    z-index: 19999;
+    align-items: center; justify-content: center;
+    padding: 16px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+  .qp-overlay.active { display: flex; }
+  .qp-box {
+    background: #111; border: 1px solid #2A2A2A; border-radius: 20px;
+    width: 100%; max-width: 500px; max-height: 92vh; overflow-y: auto;
+    position: relative;
+    animation: qpPop 0.28s cubic-bezier(.34,1.56,.64,1);
+    box-shadow: 0 28px 90px rgba(0,0,0,0.7);
+  }
+  @keyframes qpPop {
+    from { opacity:0; transform:scale(0.88) translateY(20px); }
+    to   { opacity:1; transform:scale(1) translateY(0); }
+  }
+  .qp-close {
+    position: absolute; top: 14px; right: 16px;
+    background: rgba(255,255,255,0.08); border: none;
+    width: 32px; height: 32px; border-radius: 50%;
+    font-size: 17px; cursor: pointer; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s; z-index: 2;
+  }
+  .qp-close:hover { background: rgba(255,255,255,0.18); }
+  .qp-header {
+    background: linear-gradient(135deg, #A3030B, #CD040B);
+    padding: 26px 28px 20px; border-radius: 20px 20px 0 0;
+  }
+  .qp-header-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 100px; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    padding: 3px 11px; margin-bottom: 10px; color: #fff;
+  }
+  .qp-header h2 {
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: 26px; font-weight: 900; text-transform: uppercase;
+    line-height: 1.1; margin-bottom: 4px; color: #fff;
+  }
+  .qp-header p { font-size: 13px; color: rgba(255,255,255,0.85); }
+  .qp-call-row {
+    display: flex; align-items: center; gap: 14px;
+    background: rgba(205,4,11,0.10); border: 1px solid rgba(205,4,11,0.28);
+    border-radius: 11px; padding: 14px 18px; margin: 20px 24px 0;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .qp-call-row:hover { background: rgba(205,4,11,0.20); }
+  .qp-call-icon { font-size: 28px; flex-shrink: 0; }
+  .qp-call-label { font-size: 10.5px; color: #888; text-transform: uppercase; letter-spacing: 0.07em; }
+  .qp-call-num { font-family: "Barlow Condensed", sans-serif; font-size: 22px; font-weight: 800; color: #fff; }
+  .qp-call-live { font-size: 11px; color: #22C55E; font-weight: 600; }
+  .qp-divider {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11.5px; color: #666; margin: 16px 24px;
+  }
+  .qp-divider::before,.qp-divider::after { content:''; flex:1; height:1px; background:#2A2A2A; }
+  .qp-body { padding: 0 24px 24px; }
+  .qp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; margin-bottom: 11px; }
+  .qp-row.full { grid-template-columns: 1fr; }
+  .qp-fg { display: flex; flex-direction: column; gap: 5px; }
+  .qp-fg label { font-size: 11px; font-weight: 600; color: #AAAAAA; letter-spacing: 0.04em; text-transform: uppercase; }
+  .qp-fg input, .qp-fg select, .qp-fg textarea {
+    background: #0D0D0D; border: 1px solid #2A2A2A; border-radius: 8px;
+    color: #fff; font-size: 14px; padding: 10px 12px;
+    font-family: "Inter", sans-serif; outline: none; width: 100%;
+    transition: border-color 0.2s;
+  }
+  .qp-fg input:focus,.qp-fg select:focus,.qp-fg textarea:focus { border-color: #CD040B; }
+  .qp-fg select option { background: #111; }
+  .qp-fg textarea { resize: vertical; min-height: 64px; }
+  .qp-submit {
+    width: 100%; margin-top: 8px;
+    background: #CD040B; border: none; color: #fff;
+    font-size: 15px; font-weight: 700; padding: 14px;
+    border-radius: 9px; cursor: pointer; font-family: "Inter", sans-serif;
+    transition: background 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .qp-submit:hover { background: #FF1A23; }
+  .qp-submit:disabled { background: #555; cursor: not-allowed; }
+  .qp-note { font-size: 11px; color: #666; text-align: center; margin-top: 10px; }
+  /* success */
+  .qp-success { display: none; padding: 44px 28px; text-align: center; }
+  .qp-success.active { display: block; }
+  .qp-success-icon { font-size: 50px; margin-bottom: 12px; }
+  .qp-success-title { font-family: "Barlow Condensed", sans-serif; font-size: 28px; font-weight: 900; text-transform: uppercase; margin-bottom: 8px; color: #fff; }
+  .qp-success-sub { font-size: 14px; color: #888; line-height: 1.65; margin-bottom: 20px; }
+  .qp-success-call { display: inline-flex; align-items: center; gap: 8px; background: #CD040B; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; }
+  @media(max-width:480px){ .qp-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- ══ QUOTE FORM POPUP ══ -->
+<div class="qp-overlay" id="qpPopup">
+  <div class="qp-box">
+    <button class="qp-close" onclick="qpClose()" aria-label="Close">&#x2715;</button>
+
+    <!-- form view -->
+    <div id="qp-form-view">
+      <div class="qp-header">
+        <div class="qp-header-badge">&#x1F512; Authorized Verizon Dealer</div>
+        <h2>Get Your Free<br>Verizon Quote</h2>
+        <p>30 seconds &#xB7; No commitment &#xB7; Agent calls within 1 hour</p>
+      </div>
+      <a href="tel:8886084966" class="qp-call-row">
+        <div class="qp-call-icon">&#128222;</div>
+        <div>
+          <div class="qp-call-label">Rather call directly?</div>
+          <div class="qp-call-num">(888) 608-4966</div>
+          <div class="qp-call-live">&#9679; Live agents 24/7</div>
+        </div>
+      </a>
+      <div class="qp-divider">or leave your details below</div>
+      <div class="qp-body">
+        <div class="qp-row">
+          <div class="qp-fg"><label>First Name *</label><input type="text" id="qp-fn" placeholder="Jane"></div>
+          <div class="qp-fg"><label>Last Name</label><input type="text" id="qp-ln" placeholder="Smith"></div>
+        </div>
+        <div class="qp-row">
+          <div class="qp-fg"><label>Phone *</label><input type="tel" id="qp-ph" placeholder="(555) 000-0000"></div>
+          <div class="qp-fg"><label>Email</label><input type="email" id="qp-em" placeholder="you@email.com"></div>
+        </div>
+        <div class="qp-row">
+          <div class="qp-fg"><label>ZIP Code *</label><input type="text" id="qp-zp" placeholder="10001" maxlength="5"></div>
+          <div class="qp-fg"><label>Service Needed</label>
+            <select id="qp-sv">
+              <option value="">Select&hellip;</option>
+              <option>Home Internet</option>
+              <option>Mobile / Wireless</option>
+              <option>TV &amp; Streaming</option>
+              <option>Home Phone</option>
+              <option>Bundle Deal</option>
+              <option>Not sure &mdash; help me choose</option>
+            </select>
+          </div>
+        </div>
+        <div class="qp-row full">
+          <div class="qp-fg"><label>Current Provider (optional)</label><input type="text" id="qp-cp" placeholder="e.g. AT&amp;T, Xfinity, Spectrum&hellip;"></div>
+        </div>
+        <div class="qp-row full">
+          <div class="qp-fg"><label>Anything else?</label><textarea id="qp-msg" placeholder="Budget, number of lines, special requirements&hellip;"></textarea></div>
+        </div>
+        <button class="qp-submit" id="qp-btn" onclick="qpSubmit()">&#x1F4CB; Get My Free Verizon Quote</button>
+        <p class="qp-note">&#x1F512; Your info is never sold. An agent calls within 1 business hour.</p>
+      </div>
+    </div>
+
+    <!-- success view -->
+    <div class="qp-success" id="qp-success-view">
+      <div class="qp-success-icon">&#x1F389;</div>
+      <div class="qp-success-title">You're All Set!</div>
+      <p class="qp-success-sub">A Verizon specialist will call you within <strong>1 business hour</strong> with the best plans available in your area.</p>
+      <a href="tel:8886084966" class="qp-success-call">&#128222; Call Now: (888) 608-4966</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ VERIZON CALL POPUP ══ -->
+<div class="vz-overlay" id="vzPopup">
+  <div class="vz-box">
+    <button class="vz-close" onclick="vzClose()" aria-label="Close">&#x2715;</button>
+    <div class="vz-top">
+      <div class="vz-logo-wrap">
+        <svg class="vz-logo-svg" viewBox="0 0 300 70" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 12 L34 48 L50 12" stroke="#CD040B" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="62" y="50" font-family="Arial,sans-serif" font-weight="900" font-size="38" fill="#000">verizon</text>
+        </svg>
+      </div>
+      <div class="vz-top-title">Call to Get Your<br>Verizon Deal Now</div>
+      <div class="vz-top-sub">Authorized Dealer &nbsp;&middot;&nbsp; Official Pricing &nbsp;&middot;&nbsp; No Hold Times</div>
+    </div>
+    <div class="vz-body">
+      <div class="vz-body-label">Speak with a live agent</div>
+      <a href="tel:8886084966" class="vz-call-btn">
+        <span class="vz-phone-icon">&#128222;</span>
+        (888) 608-4966
+      </a>
+      <a href="tel:8886084966" class="vz-call-alt">Call Now: (888) 608-4966</a>
+      <div class="vz-live"><span class="vz-live-dot"></span>&nbsp;Agents available 24/7 &mdash; no wait</div>
+      <p class="vz-disclaimer">FastBroadbands.us is an independent authorized Verizon dealer. Not affiliated with Verizon Communications Inc.</p>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-badge">FB</span>
+      <span class="logo-text">Fast<span>Broadbands</span></span>
+    </a>
+    <a href="index.html" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- Left: copy -->
+    <div>
+      <div class="hero-eyebrow">Authorized Verizon Retailer</div>
+      <h1>
+        <span class="dim">Get Verizon</span>
+        Best<br>Deals<br><span class="red">Near You</span>
+      </h1>
+      <p class="hero-sub">Leave your details — a live Verizon specialist from FastBroadbands will call you within 1 hour with the best available plans and pricing in your area. No pressure. No fees.</p>
+      <div class="trust-pills">
+        <span class="trust-pill">✅ Official Verizon Pricing</span>
+        <span class="trust-pill">🎁 Exclusive Dealer Promos</span>
+        <span class="trust-pill">📞 Call Back in &lt;1 Hr</span>
+        <span class="trust-pill">🔒 No Spam, Ever</span>
+      </div>
+      <a href="tel:8886084966" class="hero-call">
+        <div class="hero-call-icon">📞</div>
+        <div>
+          <div class="hero-call-label">Rather call us directly?</div>
+          <div class="hero-call-num">(888) 608-4966</div>
+          <div class="hero-call-live">Agents live 24/7</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Right: lead form -->
+    <div>
+      <div class="form-card">
+        <div class="form-card-header">
+          <h2>🚀 Get Your Free Quote</h2>
+          <p>Takes 30 seconds · No commitment required</p>
+        </div>
+
+        <div class="form-card-body" id="form-view">
+          <div class="frow">
+            <div class="fg">
+              <label>First Name *</label>
+              <input type="text" id="fn" placeholder="Jane">
+            </div>
+            <div class="fg">
+              <label>Last Name</label>
+              <input type="text" id="ln" placeholder="Smith">
+            </div>
+          </div>
+          <div class="frow">
+            <div class="fg">
+              <label>Phone Number *</label>
+              <input type="tel" id="ph" placeholder="(555) 000-0000">
+            </div>
+            <div class="fg">
+              <label>Email Address</label>
+              <input type="email" id="em" placeholder="jane@email.com">
+            </div>
+          </div>
+          <div class="frow">
+            <div class="fg">
+              <label>ZIP Code *</label>
+              <input type="text" id="zp" placeholder="10001" maxlength="5">
+            </div>
+            <div class="fg">
+              <label>Service Needed</label>
+              <select id="sv">
+                <option value="">Select…</option>
+                <option>Home Internet</option>
+                <option>Mobile / Wireless</option>
+                <option>TV & Streaming</option>
+                <option>Home Phone</option>
+                <option>Bundle (Internet + Mobile)</option>
+                <option>Not sure — help me choose</option>
+              </select>
+            </div>
+          </div>
+          <div class="frow single">
+            <div class="fg">
+              <label>Current Provider (optional)</label>
+              <input type="text" id="cp" placeholder="e.g. AT&T, Xfinity, Spectrum…">
+            </div>
+          </div>
+          <div class="frow single">
+            <div class="fg">
+              <label>Anything else?</label>
+              <textarea id="msg" placeholder="e.g. need 4 lines, budget under $120/mo, switching from Comcast…"></textarea>
+            </div>
+          </div>
+          <button class="form-submit-btn" onclick="submitLead()">
+            📋 Request My Free Verizon Quote
+          </button>
+          <p class="form-note">🔒 Your info is never sold or shared. A live agent calls you within 1 business hour.</p>
+        </div>
+
+        <!-- Success -->
+        <div class="form-success" id="success-view">
+          <div class="form-success-icon">🎉</div>
+          <div class="form-success-title">You're on the list!</div>
+          <p class="form-success-sub">A Verizon specialist from FastBroadbands will call you within <strong>1 business hour</strong> with the best available plans in your area.<br><br>Need help sooner?</p>
+          <a href="tel:8886084966" class="form-success-call">📞 Call (888) 608-4966 Now</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stat-strip">
+  <div class="stat-inner">
+    <div class="stat-item">
+      <div class="stat-num">$35<span>/mo</span></div>
+      <div class="stat-label">Internet from</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2<span>Gbps</span></div>
+      <div class="stat-label">Max speeds</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24<span>/7</span></div>
+      <div class="stat-label">Live support</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">30<span>-day</span></div>
+      <div class="stat-label">Money-back</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY VERIZON -->
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Why Verizon</div>
+    <h2 class="sec-title">America's #1 Network,<br>Better Deals Through Us</h2>
+    <p class="sec-sub">We're an authorized dealer — same Verizon service, with personalized help and exclusive promotions you won't find on their website.</p>
+    <div class="perks-grid">
+      <div class="perk-card">
+        <div class="perk-icon">🏆</div>
+        <div class="perk-title">Most Reliable Network</div>
+        <div class="perk-desc">Verizon ranks #1 in network reliability across the US, year after year.</div>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">⚡</div>
+        <div class="perk-title">Blazing Fast Speeds</div>
+        <div class="perk-desc">Fiber and 5G home internet with speeds up to 2 Gbps — no throttling, no caps.</div>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">💰</div>
+        <div class="perk-title">Exclusive Dealer Deals</div>
+        <div class="perk-desc">Access bundle discounts and promos not available directly through Verizon.com.</div>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">🤝</div>
+        <div class="perk-title">Personal Agent Support</div>
+        <div class="perk-desc">Skip hold times. Our agents know Verizon's catalog inside-out and work for you.</div>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">📦</div>
+        <div class="perk-title">Bundle & Save</div>
+        <div class="perk-desc">Combine internet, mobile, and TV for up to $25/mo savings on a single bill.</div>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">🔧</div>
+        <div class="perk-title">Free Pro Installation</div>
+        <div class="perk-desc">A certified Verizon tech sets up everything at your home — usually within 2–3 days.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOP PLANS -->
+<section class="section plans-bg">
+  <div class="section-inner">
+    <div class="eyebrow">Top Plans</div>
+    <h2 class="sec-title">Popular Verizon Plans</h2>
+    <p class="sec-sub">Request a quote and we'll match you to the right plan — or build a custom bundle.</p>
+    <div class="plans-row">
+      <div class="plan-card">
+        <div class="plan-name">Home Internet — Essential</div>
+        <div class="plan-tag">Light browsing & email</div>
+        <div class="plan-price"><sup>$</sup>35<span class="plan-mo">/mo</span></div>
+        <div class="plan-note">for 24 mos. w/ Auto Pay</div>
+        <ul class="plan-feats">
+          <li><span class="ck">✓</span> Up to 300 Mbps</li>
+          <li><span class="ck">✓</span> No data caps</li>
+          <li><span class="ck">✓</span> Free installation</li>
+          <li><span class="ck">✓</span> No annual contract</li>
+        </ul>
+        <hr class="pd">
+        <button class="plan-cta outline" onclick="scrollToForm()">Get This Plan</button>
+      </div>
+      <div class="plan-card hot">
+        <div class="plan-badge">⭐ Most Popular</div>
+        <div class="plan-name">Home Internet — Plus</div>
+        <div class="plan-tag">Streaming, gaming & WFH</div>
+        <div class="plan-price"><sup>$</sup>55<span class="plan-mo">/mo</span></div>
+        <div class="plan-note">for 24 mos. w/ Auto Pay</div>
+        <ul class="plan-feats">
+          <li><span class="ck">✓</span> Up to 1 Gbps</li>
+          <li><span class="ck">✓</span> Free router included</li>
+          <li><span class="ck">✓</span> 5G Home backup</li>
+          <li><span class="ck">✓</span> No annual contract</li>
+        </ul>
+        <hr class="pd">
+        <button class="plan-cta solid" onclick="scrollToForm()">Get This Plan</button>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Family Bundle</div>
+        <div class="plan-tag">Internet + 4 mobile lines</div>
+        <div class="plan-price"><sup>$</sup>130<span class="plan-mo">/mo</span></div>
+        <div class="plan-note">total w/ Auto Pay — save $25/mo</div>
+        <ul class="plan-feats">
+          <li><span class="ck">✓</span> 1 Gbps Home Internet</li>
+          <li><span class="ck">✓</span> 4 unlimited mobile lines</li>
+          <li><span class="ck">✓</span> Disney+ included free</li>
+          <li><span class="ck">✓</span> Priority support</li>
+        </ul>
+        <hr class="pd">
+        <button class="plan-cta outline" onclick="scrollToForm()">Get This Plan</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow">Reviews</div>
+    <h2 class="sec-title">What Customers Say</h2>
+    <p class="sec-sub" style="margin-bottom:36px;">Real customers who switched through FastBroadbands.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Called on a Monday, had Verizon installed by Wednesday. The agent found me a bundle deal I never would've found on my own — saving $30/mo vs. what I had with Xfinity."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MR</div>
+          <div><div class="testi-name">Marcus R.</div><div class="testi-loc">Phoenix, AZ</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I was skeptical about using a reseller but they gave me the exact same Verizon pricing. The agent was patient, answered every question, and set up 4 lines for my family in one call."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SL</div>
+          <div><div class="testi-name">Sandra L.</div><div class="testi-loc">Houston, TX</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Filled out the form at 9 PM. Got a call at 9:15 PM. Had my order placed before 10. Fastest I've ever gotten internet service sorted out. Highly recommend."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">DJ</div>
+          <div><div class="testi-name">Derek J.</div><div class="testi-loc">Atlanta, GA</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<div class="cta-section">
+  <h2>Don't Overpay for Internet.</h2>
+  <p>Get a free quote in 30 seconds — a live agent handles the rest.</p>
+  <div class="cta-btns">
+    <button class="btn-w" onclick="qpOpen()">📋 Get My Free Quote</button>
+    <a href="tel:8886084966" class="btn-ow">📞 (888) 608-4966</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-badge">FB</span>
+      <span class="logo-text">Fast<span>Broadbands</span></span>
+    </a>
+    <p>© 2025 FastBroadbands.us — Authorized Verizon Dealer</p>
+    <p><a href="tel:8886084966" style="color:#888; text-decoration:none;">(888) 608-4966</a></p>
+  </div>
+  <div class="footer-disclaimer">
+    Pricing reflects promotional rates with Auto Pay & paperless billing. Taxes and fees not included. FastBroadbands is an independent authorized dealer. Verizon is a registered trademark of Verizon Communications Inc.
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div class="sticky-bar">
+  <div class="sticky-bar-ctas">
+    <a href="tel:8886084966" class="sticky-call">📞 Call Now</a>
+    <button class="sticky-form" onclick="qpOpen()">📋 Get a Quote</button>
+  </div>
+  <div class="sticky-note">Agents available 24/7 · No pressure · Free consultation</div>
+</div>
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+// ── EmailJS config ──────────────────────────────────────────────
+// SETUP INSTRUCTIONS (one-time, 5 min):
+// 1. Go to https://www.emailjs.com and create a FREE account
+// 2. Add an Email Service (connect your Gmail: tabishshoaib704@gmail.com)
+// 3. Create an Email Template — use these variables in it:
+//    {{from_name}}, {{phone}}, {{email}}, {{zip}}, {{service}}, {{provider}}, {{message}}, {{page}}
+// 4. Replace the 3 values below with your real IDs from EmailJS dashboard
+var EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";   // Account > API Keys
+var EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";   // Email Services > Service ID
+var EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";  // Email Templates > Template ID
+
+emailjs.init(EMAILJS_PUBLIC_KEY);
+
+// ── Page-level lead form (hero section) ────────────────────────
+function submitLead() {
+  var fn = document.getElementById('fn').value.trim();
+  var ph = document.getElementById('ph').value.trim();
+  var zp = document.getElementById('zp').value.trim();
+  if (!fn) { document.getElementById('fn').focus(); return; }
+  if (!ph) { document.getElementById('ph').focus(); return; }
+  if (!zp) { document.getElementById('zp').focus(); return; }
+
+  var btn = document.querySelector('.form-submit-btn');
+  if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+
+  var params = {
+    from_name : fn + ' ' + (document.getElementById('ln').value.trim()),
+    phone     : ph,
+    email     : document.getElementById('em').value.trim() || 'Not provided',
+    zip       : zp,
+    service   : document.getElementById('sv').value || 'Not selected',
+    provider  : document.getElementById('cp').value.trim() || 'Not provided',
+    message   : document.getElementById('msg').value.trim() || 'None',
+    page      : 'Verizon Page – Hero Form'
+  };
+
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params)
+    .then(function(){
+      document.getElementById('form-view').style.display = 'none';
+      document.getElementById('success-view').classList.add('active');
+    })
+    .catch(function(err){
+      console.error('EmailJS error:', err);
+      // Still show success to user even if email fails
+      document.getElementById('form-view').style.display = 'none';
+      document.getElementById('success-view').classList.add('active');
+    });
+}
+
+// ── Quote popup form ────────────────────────────────────────────
+function qpOpen(){ document.getElementById('qpPopup').classList.add('active'); document.body.style.overflow='hidden'; }
+function qpClose(){ document.getElementById('qpPopup').classList.remove('active'); document.body.style.overflow=''; }
+document.getElementById('qpPopup').addEventListener('click', function(e){ if(e.target===this) qpClose(); });
+
+function qpSubmit(){
+  var fn = document.getElementById('qp-fn').value.trim();
+  var ph = document.getElementById('qp-ph').value.trim();
+  var zp = document.getElementById('qp-zp').value.trim();
+  if(!fn){ document.getElementById('qp-fn').focus(); return; }
+  if(!ph){ document.getElementById('qp-ph').focus(); return; }
+  if(!zp){ document.getElementById('qp-zp').focus(); return; }
+
+  var btn = document.getElementById('qp-btn');
+  btn.disabled = true; btn.textContent = 'Sending…';
+
+  var params = {
+    from_name : fn + ' ' + (document.getElementById('qp-ln').value.trim()),
+    phone     : ph,
+    email     : document.getElementById('qp-em').value.trim() || 'Not provided',
+    zip       : zp,
+    service   : document.getElementById('qp-sv').value || 'Not selected',
+    provider  : document.getElementById('qp-cp').value.trim() || 'Not provided',
+    message   : document.getElementById('qp-msg').value.trim() || 'None',
+    page      : 'Verizon Page – Popup Form'
+  };
+
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params)
+    .then(function(){
+      document.getElementById('qp-form-view').style.display = 'none';
+      document.getElementById('qp-success-view').classList.add('active');
+    })
+    .catch(function(err){
+      console.error('EmailJS error:', err);
+      document.getElementById('qp-form-view').style.display = 'none';
+      document.getElementById('qp-success-view').classList.add('active');
+    });
+}
+
+function scrollToForm() {
+  const fc = document.querySelector('.form-card');
+  if (fc) fc.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => document.getElementById('fn').focus(), 600);
+}
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.perk-card, .plan-card, .testi-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+  obs.observe(el);
+});
+</script>
+<script>
+(function(){
+  function vzOpen(){ document.getElementById("vzPopup").classList.add("active"); document.body.style.overflow="hidden"; }
+  function vzClose(){ document.getElementById("vzPopup").classList.remove("active"); document.body.style.overflow=""; }
+  window.vzOpen = vzOpen;
+  window.vzClose = vzClose;
+  document.getElementById("vzPopup").addEventListener("click", function(e){ if(e.target===this) vzClose(); });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape") vzClose(); });
+  // Mobile-only: only show on screens <= 768px wide
+  function isMobile(){ return window.innerWidth <= 768; }
+  function vzSchedule(){
+    if(isMobile()){
+      setTimeout(function(){
+        vzOpen();
+        // Re-schedule to reopen 5s after it's closed
+      }, 5000);
+    }
+  }
+  // Override vzClose to reschedule after close
+  var _origClose = vzClose;
+  window.vzClose = function(){
+    _origClose();
+    vzSchedule();
+  };
+  // Also reschedule when overlay is clicked (already calls vzClose via override)
+  // Initial trigger after 1.8s on mobile only
+  if(isMobile()){
+    setTimeout(function(){ vzOpen(); }, 1800);
+  }
+})();
+</script>
+</body>
+</html>
