@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Get the best Verizon deals through FastBroadbands.us — an authorized Verizon retailer. Free quote, live agent callback within 1 hour. Home internet from $35/mo, mobile plans, TV bundles.">
+<meta name="robots" content="index, follow">
 <title>Verizon Deals — FastBroadbands.us | Authorized Retailer</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -444,12 +446,28 @@
   .qp-success-sub { font-size: 14px; color: #888; line-height: 1.65; margin-bottom: 20px; }
   .qp-success-call { display: inline-flex; align-items: center; gap: 8px; background: #CD040B; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 14px; }
   @media(max-width:480px){ .qp-row { grid-template-columns: 1fr; } }
+
+  /* ── ADA: Focus visible styles ── */
+  *:focus-visible {
+    outline: 2px solid #FF6B6B !important;
+    outline-offset: 3px !important;
+  }
+  button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid #FF6B6B !important;
+    outline-offset: 3px !important;
+  }
+  /* Contrast fixes */
+  .plan-tag, .plan-note, .plan-mo { color: #AAAAAA !important; }
+  .sec-sub { color: #AAAAAA !important; }
+  .testi-text { color: #CCCCCC !important; }
+  .perk-desc { color: #AAAAAA !important; }
+  .hero-sub { color: #CCCCCC !important; }
 </style>
 </head>
 <body>
 
 <!-- ══ QUOTE FORM POPUP ══ -->
-<div class="qp-overlay" id="qpPopup">
+<div class="qp-overlay" id="qpPopup" role="dialog" aria-modal="true" aria-label="Get a free Verizon quote">
   <div class="qp-box">
     <button class="qp-close" onclick="qpClose()" aria-label="Close">&#x2715;</button>
 
@@ -471,17 +489,17 @@
       <div class="qp-divider">or leave your details below</div>
       <div class="qp-body">
         <div class="qp-row">
-          <div class="qp-fg"><label>First Name *</label><input type="text" id="qp-fn" placeholder="Jane"></div>
-          <div class="qp-fg"><label>Last Name</label><input type="text" id="qp-ln" placeholder="Smith"></div>
+          <div class="qp-fg"><label>First Name *</label><input type="text" id="qp-fn" placeholder="Jane" autocomplete="given-name" aria-required="true" aria-label="First name"></div>
+          <div class="qp-fg"><label>Last Name</label><input type="text" id="qp-ln" placeholder="Smith" autocomplete="family-name" aria-label="Last name"></div>
         </div>
         <div class="qp-row">
-          <div class="qp-fg"><label>Phone *</label><input type="tel" id="qp-ph" placeholder="(555) 000-0000"></div>
-          <div class="qp-fg"><label>Email</label><input type="email" id="qp-em" placeholder="you@email.com"></div>
+          <div class="qp-fg"><label>Phone *</label><input type="tel" id="qp-ph" placeholder="(555) 000-0000" autocomplete="tel" aria-required="true" aria-label="Phone number"></div>
+          <div class="qp-fg"><label>Email</label><input type="email" id="qp-em" placeholder="you@email.com" autocomplete="email" aria-label="Email address"></div>
         </div>
         <div class="qp-row">
-          <div class="qp-fg"><label>ZIP Code *</label><input type="text" id="qp-zp" placeholder="10001" maxlength="5"></div>
+          <div class="qp-fg"><label>ZIP Code *</label><input type="text" id="qp-zp" placeholder="10001" maxlength="5" autocomplete="postal-code" aria-required="true" aria-label="ZIP code"></div>
           <div class="qp-fg"><label>Service Needed</label>
-            <select id="qp-sv">
+            <select id="qp-sv" aria-label="Service needed">
               <option value="">Select&hellip;</option>
               <option>Home Internet</option>
               <option>Mobile / Wireless</option>
@@ -514,7 +532,7 @@
 </div>
 
 <!-- ══ VERIZON CALL POPUP ══ -->
-<div class="vz-overlay" id="vzPopup">
+<div class="vz-overlay" id="vzPopup" role="dialog" aria-modal="true" aria-label="Call for Verizon deals">
   <div class="vz-box">
     <button class="vz-close" onclick="vzClose()" aria-label="Close">&#x2715;</button>
     <div class="vz-top">
@@ -541,9 +559,9 @@
 </div>
 
 <!-- NAV -->
-<nav>
+<nav role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="index.html" class="logo">
+    <a href="index.html" class="logo" aria-label="FastBroadbands home">
       <span class="logo-badge">FB</span>
       <span class="logo-text">Fast<span>Broadbands</span></span>
     </a>
@@ -552,7 +570,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="main-content" role="main" aria-label="Verizon deals quote request">
   <div class="hero-inner">
 
     <!-- Left: copy -->
@@ -591,31 +609,31 @@
           <div class="frow">
             <div class="fg">
               <label>First Name *</label>
-              <input type="text" id="fn" placeholder="Jane">
+              <input type="text" id="fn" placeholder="Jane" autocomplete="given-name" aria-required="true" aria-label="First name">
             </div>
             <div class="fg">
               <label>Last Name</label>
-              <input type="text" id="ln" placeholder="Smith">
+              <input type="text" id="ln" placeholder="Smith" autocomplete="family-name" aria-label="Last name">
             </div>
           </div>
           <div class="frow">
             <div class="fg">
               <label>Phone Number *</label>
-              <input type="tel" id="ph" placeholder="(555) 000-0000">
+              <input type="tel" id="ph" placeholder="(555) 000-0000" autocomplete="tel" aria-required="true" aria-label="Phone number">
             </div>
             <div class="fg">
               <label>Email Address</label>
-              <input type="email" id="em" placeholder="jane@email.com">
+              <input type="email" id="em" placeholder="jane@email.com" autocomplete="email" aria-label="Email address">
             </div>
           </div>
           <div class="frow">
             <div class="fg">
               <label>ZIP Code *</label>
-              <input type="text" id="zp" placeholder="10001" maxlength="5">
+              <input type="text" id="zp" placeholder="10001" maxlength="5" autocomplete="postal-code" aria-required="true" aria-label="ZIP code">
             </div>
             <div class="fg">
               <label>Service Needed</label>
-              <select id="sv">
+              <select id="sv" aria-label="Service needed">
                 <option value="">Select…</option>
                 <option>Home Internet</option>
                 <option>Mobile / Wireless</option>
@@ -629,7 +647,7 @@
           <div class="frow single">
             <div class="fg">
               <label>Current Provider (optional)</label>
-              <input type="text" id="cp" placeholder="e.g. AT&T, Xfinity, Spectrum…">
+              <input type="text" id="cp" placeholder="e.g. AT&T, Xfinity, Spectrum…" aria-label="Current internet provider">
             </div>
           </div>
           <div class="frow single">
@@ -659,7 +677,7 @@
 </section>
 
 <!-- STATS -->
-<div class="stat-strip">
+<div class="stat-strip" role="region" aria-label="Service statistics">
   <div class="stat-inner">
     <div class="stat-item">
       <div class="stat-num">$35<span>/mo</span></div>
@@ -681,7 +699,7 @@
 </div>
 
 <!-- WHY VERIZON -->
-<section class="section">
+<section class="section" aria-label="Why choose Verizon">
   <div class="section-inner">
     <div class="eyebrow">Why Verizon</div>
     <h2 class="sec-title">America's #1 Network,<br>Better Deals Through Us</h2>
@@ -722,7 +740,7 @@
 </section>
 
 <!-- TOP PLANS -->
-<section class="section plans-bg">
+<section class="section plans-bg" aria-label="Popular Verizon plans">
   <div class="section-inner">
     <div class="eyebrow">Top Plans</div>
     <h2 class="sec-title">Popular Verizon Plans</h2>
@@ -740,7 +758,7 @@
           <li><span class="ck">✓</span> No annual contract</li>
         </ul>
         <hr class="pd">
-        <button class="plan-cta outline" onclick="scrollToForm()">Get This Plan</button>
+        <button class="plan-cta outline" onclick="scrollToForm()" aria-label="Select this plan and scroll to quote form">Get This Plan</button>
       </div>
       <div class="plan-card hot">
         <div class="plan-badge">⭐ Most Popular</div>
@@ -755,7 +773,7 @@
           <li><span class="ck">✓</span> No annual contract</li>
         </ul>
         <hr class="pd">
-        <button class="plan-cta solid" onclick="scrollToForm()">Get This Plan</button>
+        <button class="plan-cta solid" onclick="scrollToForm()" aria-label="Select this plan and scroll to quote form">Get This Plan</button>
       </div>
       <div class="plan-card">
         <div class="plan-name">Family Bundle</div>
@@ -769,7 +787,7 @@
           <li><span class="ck">✓</span> Priority support</li>
         </ul>
         <hr class="pd">
-        <button class="plan-cta outline" onclick="scrollToForm()">Get This Plan</button>
+        <button class="plan-cta outline" onclick="scrollToForm()" aria-label="Select this plan and scroll to quote form">Get This Plan</button>
       </div>
     </div>
   </div>
@@ -811,7 +829,7 @@
 </section>
 
 <!-- BOTTOM CTA -->
-<div class="cta-section">
+<div class="cta-section" role="region" aria-label="Call to action">
   <h2>Don't Overpay for Internet.</h2>
   <p>Get a free quote in 30 seconds — a live agent handles the rest.</p>
   <div class="cta-btns">
@@ -821,9 +839,9 @@
 </div>
 
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <div class="footer-inner">
-    <a href="index.html" class="logo">
+    <a href="index.html" class="logo" aria-label="FastBroadbands home">
       <span class="logo-badge">FB</span>
       <span class="logo-text">Fast<span>Broadbands</span></span>
     </a>
@@ -851,8 +869,8 @@
 <!-- MOBILE STICKY BAR -->
 <div class="sticky-bar">
   <div class="sticky-bar-ctas">
-    <a href="tel:8886084966" class="sticky-call">📞 Call Now</a>
-    <button class="sticky-form" onclick="qpOpen()">📋 Get a Quote</button>
+    <a href="tel:8886084966" class="sticky-call" aria-label="Call FastBroadbands at (888) 608-4966">📞 Call Now</a>
+    <button class="sticky-form" onclick="qpOpen()" aria-label="Open quote request form">📋 Get a Quote</button>
   </div>
   <div class="sticky-note">Agents available 24/7 · No pressure · Free consultation</div>
 </div>

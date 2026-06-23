@@ -24,14 +24,16 @@
   a { color:#CD040B; }
   .highlight { background:rgba(205,4,11,0.08); border:1px solid rgba(205,4,11,0.2); border-radius:10px; padding:18px 20px; margin-bottom:20px; }
   footer { border-top:1px solid #2A2A2A; padding:24px; text-align:center; font-size:12px; color:#555; }
+  *:focus-visible { outline: 2px solid #CD040B !important; outline-offset: 3px !important; }
 </style>
 </head>
 <body>
-<nav><div class="nav-inner">
+<a href="#main-content" style="position:absolute;top:-100px;left:0;background:#CD040B;color:#fff;padding:8px 16px;z-index:99999;font-size:14px;font-weight:700;" onFocus="this.style.top='0'" onBlur="this.style.top='-100px'">Skip to main content</a>
+<nav role="navigation" aria-label="Main navigation"><div class="nav-inner">
   <a href="index.html" class="logo"><span class="logo-badge">FB</span><span class="logo-text">Fast<span>Broadbands</span></span></a>
   <a href="index.html" class="nav-back">← Back to Home</a>
 </div></nav>
-<div class="content">
+<main id="main-content" class="content" role="main">
   <h1>Disclaimer</h1>
   <p class="updated">Last updated: June 2025</p>
 
@@ -59,6 +61,6 @@
   <p>For questions about this disclaimer:<br>
   Email: <a href="mailto:support@fastbroadbands.us">support@fastbroadbands.us</a><br>
   Phone: <a href="tel:8886084966">(888) 608-4966</a></p>
-</div>
-<footer>© 2025 FastBroadbands.us — Authorized Verizon Dealer — Not affiliated with Verizon Communications Inc.</footer>
+</main>
+<footer role="contentinfo">© 2025 FastBroadbands.us — Authorized Verizon Dealer — Not affiliated with Verizon Communications Inc.</footer>
 </body></html>
