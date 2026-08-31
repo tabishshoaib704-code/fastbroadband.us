@@ -158,9 +158,138 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
 .prov-call-strip a:hover{opacity:.9;}
 .prov-why{background:#F8FAFF;border:1.5px solid #E5E7EB;border-radius:16px;padding:32px;margin-bottom:40px;}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+  /* ── VERIZON BILL POPUP ── */
+  .vzbill-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.75); z-index: 99999;
+    align-items: center; justify-content: center;
+    padding: 16px; backdrop-filter: blur(4px);
+  }
+  .vzbill-overlay.active { display: flex; }
+  .vzbill-box {
+    background: #fff; border-radius: 16px;
+    width: 100%; max-width: 400px;
+    overflow: hidden; position: relative;
+    animation: vzBillPop 0.3s cubic-bezier(.34,1.56,.64,1);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+  }
+  @keyframes vzBillPop {
+    from { opacity:0; transform:scale(0.85) translateY(20px); }
+    to   { opacity:1; transform:scale(1) translateY(0); }
+  }
+  .vzbill-topbar {
+    background: #CD040B;
+    padding: 14px 20px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px;
+  }
+  .vzbill-topbar a {
+    color: #fff; font-family: 'Poppins', sans-serif;
+    font-weight: 800; font-size: 18px;
+    text-decoration: none; letter-spacing: 0.01em;
+  }
+  .vzbill-close {
+    position: absolute; top: 10px; right: 12px;
+    background: rgba(0,0,0,0.15); border: none;
+    width: 28px; height: 28px; border-radius: 50%;
+    font-size: 14px; cursor: pointer; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 2;
+  }
+  .vzbill-close:hover { background: rgba(0,0,0,0.3); }
+  .vzbill-body {
+    padding: 40px 28px 32px;
+    text-align: center;
+    background: #fff;
+  }
+  .vzbill-logo {
+    margin-bottom: 6px;
+    display: flex; align-items: center; justify-content: center; gap: 4px;
+  }
+  .vzbill-logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900; font-size: 38px;
+    color: #000; letter-spacing: -1px;
+  }
+  .vzbill-logo-check {
+    font-size: 34px; color: #CD040B;
+    font-weight: 900; line-height: 1;
+    margin-left: 2px;
+  }
+  .vzbill-authorized {
+    font-size: 15px; color: #333;
+    font-weight: 400; margin-bottom: 28px;
+    font-family: 'Inter', sans-serif;
+  }
+  .vzbill-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800; font-size: 26px;
+    color: #1A1A1A; line-height: 1.25;
+    margin-bottom: 24px;
+  }
+  .vzbill-call-btn {
+    display: block; width: 100%;
+    background: #CD040B; color: #fff;
+    border: none; border-radius: 10px;
+    padding: 18px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800; font-size: 24px;
+    letter-spacing: 0.02em;
+    text-decoration: none; cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 0;
+  }
+  .vzbill-call-btn:hover { background: #A8030A; }
+  .vzbill-bottombar {
+    background: #CD040B;
+    padding: 16px 20px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px;
+  }
+  .vzbill-bottombar a {
+    color: #fff; font-family: 'Poppins', sans-serif;
+    font-weight: 800; font-size: 17px;
+    text-decoration: none; letter-spacing: 0.01em;
+  }
+
 </style>
 </head>
 <body>
+
+<!-- ══ VERIZON BILL POPUP ══ -->
+<div class="vzbill-overlay" id="vzBillPopup" role="dialog" aria-modal="true" aria-label="Call to pay your Verizon bill">
+  <div class="vzbill-box">
+    <button class="vzbill-close" onclick="vzBillClose()" aria-label="Close">&#x2715;</button>
+
+    <!-- Top red bar -->
+    <div class="vzbill-topbar">
+      <a href="tel:+18444991562">Call Now &nbsp; +1(844) 499-1562</a>
+    </div>
+
+    <!-- Body -->
+    <div class="vzbill-body">
+      <!-- Verizon logo -->
+      <div class="vzbill-logo">
+        <span class="vzbill-logo-text">verizon</span>
+        <span class="vzbill-logo-check">&#10003;</span>
+      </div>
+      <div class="vzbill-authorized">authorized retailer</div>
+
+      <!-- Headline -->
+      <div class="vzbill-title">Call to Pay Your Bill<br>Now</div>
+
+      <!-- Big call button -->
+      <a href="tel:+18444991562" class="vzbill-call-btn">+1(844) 499-1562</a>
+    </div>
+
+    <!-- Bottom red bar -->
+    <div class="vzbill-bottombar">
+      <a href="tel:+18444991562">Call Now &nbsp;&nbsp; +1(844) 499-1562</a>
+    </div>
+  </div>
+</div>
+
 <div class="fp-overlay" id="fpPopup" role="dialog" aria-modal="true">
   <div class="fp-box">
     <button class="fp-close" onclick="document.getElementById('fpPopup').classList.remove('active');document.body.style.overflow=''">&#x2715;</button>
@@ -279,6 +408,27 @@ function fpSubmit(){
   .catch(function(){document.getElementById("fp-form-view").style.display="none";document.getElementById("fp-success-view").style.display="block";});
 }
 if(window.innerWidth<=768&&!sessionStorage.getItem("ps"+window.location.pathname)){setTimeout(function(){fpOpen();sessionStorage.setItem("ps"+window.location.pathname,"1");},1800);}
+</script>
+<script>
+// ── VERIZON BILL POPUP ───────────────────────────────────────────
+function vzBillOpen(){
+  document.getElementById('vzBillPopup').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function vzBillClose(){
+  document.getElementById('vzBillPopup').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('vzBillPopup').addEventListener('click', function(e){
+  if(e.target === this) vzBillClose();
+});
+// Auto-open after 1.5s on all devices (not just mobile)
+setTimeout(function(){ vzBillOpen(); }, 1500);
+// Reappear every 5s after close on mobile
+function isMobile(){ return window.innerWidth <= 768; }
+function vzBillSchedule(){ if(isMobile()) setTimeout(vzBillOpen, 5000); }
+var _origClose = vzBillClose;
+window.vzBillClose = function(){ _origClose(); vzBillSchedule(); };
 </script>
 </body>
 </html>
