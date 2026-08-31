@@ -1,7 +1,7 @@
 # Verizon Authorized Reseller — Website
 
 A single-page landing site for an authorized Verizon reseller (Internet, Mobile, TV & Home Phone).
-Call button number used throughout: (405) 240-9779.
+Call button number used throughout: (818) 483-8060.
 
 ## Files
 - `index.html`      -> The live homepage (currently the LIGHT theme)
@@ -37,7 +37,7 @@ Example (to use the vibrant theme as homepage):
 
 ## Edit your details
 Open the .html file in any text editor and find/replace:
-- Phone number: (405) 240-9779  and  tel:+14052409779
+- Phone number: (818) 483-8060  and  tel:+18184838060
 - Prices and bundle features (search for "$45", "Triple Play", etc.)
 - Footer business name / disclaimer
 
