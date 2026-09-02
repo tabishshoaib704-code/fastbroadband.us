@@ -120,7 +120,7 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
 .feat-ck{color:#CD040B;background:#CD040B18;}
 .cta-strip{background:linear-gradient(120deg,#CD040BDD,#CD040B);}
 .page-hero{background:linear-gradient(135deg,#CD040BEE,#CD040BBB);}
-.prov-logo{font-family:"Poppins",sans-serif;font-weight:900;font-size:44px;color:#CD040B;letter-spacing:-.5px;}
+.prov-logo{font-family:"Poppins",sans-serif;font-weight:800;font-size:26px;color:#0A0A0A;letter-spacing:normal;}.prov-logo em{color:#CD040B;font-style:normal;}
 .prov-call-strip{background:#CD040B;border-radius:14px;padding:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin:40px 0;}
 .prov-call-strip h3{color:#fff;font-size:20px;font-weight:800;}
 .prov-call-strip p{color:rgba(255,255,255,.85);font-size:13.5px;font-family:Inter,sans-serif;margin-top:4px;}
@@ -173,24 +173,11 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
     text-align: center;
     background: #fff;
   }
-  .vzbill-logo {
-    margin-bottom: 6px;
-    display: flex; align-items: center; justify-content: center; gap: 4px;
-  }
-  .vzbill-logo-text {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 900; font-size: 38px;
-    color: #000; letter-spacing: -1px;
-  }
-  .vzbill-logo-check {
-    font-size: 34px; color: #CD040B;
-    font-weight: 900; line-height: 1;
-    margin-left: 2px;
-  }
   .vzbill-authorized {
     font-size: 15px; color: #333;
-    font-weight: 400; margin-bottom: 28px;
+    font-weight: 700; margin-bottom: 28px;
     font-family: 'Inter', sans-serif;
+    text-transform: uppercase; letter-spacing: .04em;
   }
   .vzbill-title {
     font-family: 'Poppins', sans-serif;
@@ -240,11 +227,7 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
     <!-- Body -->
     <div class="vzbill-body">
       <!-- Verizon logo -->
-      <div class="vzbill-logo">
-        <span class="vzbill-logo-text">verizon</span>
-        <span class="vzbill-logo-check">&#10003;</span>
-      </div>
-      <div class="vzbill-authorized">authorized retailer</div>
+      <div class="vzbill-authorized">FastBroadbands — Authorized Verizon Retailer</div>
 
       <!-- Headline -->
       <div class="vzbill-title">Call to Pay Your Bill<br>Now</div>
@@ -282,7 +265,7 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
 
 <div class="content">
   <div style="text-align:center;margin-bottom:44px;">
-    <div class="prov-logo">verizon</div>
+    <div class="prov-logo">Compare <em>Verizon</em> Plans</div>
     <p style="font-size:16px;color:#555;max-width:620px;margin:14px auto 0;font-family:Inter,sans-serif;line-height:1.75;">America's most reliable network &mdash; fiber &amp; 5G home internet, unlimited mobile, and Fios TV with 425+ channels.</p>
   </div>
 
@@ -299,6 +282,7 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
   <h2 class="sec-title">Available Plans</h2>
   <p class="sec-sub">All prices require Auto Pay &amp; paperless billing where applicable. Taxes &amp; fees not included. Availability varies by address.</p>
   <div class="plans-grid"><div class="plan-card "><div></div><div class="plan-name">Home Internet Essential</div><div class="plan-desc">300 Mbps &middot; No data caps</div><div class="plan-price"><sup>$</sup>35<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>300 Mbps download</li><li><span class="feat-ck">&#10003;</span>No annual contract</li><li><span class="feat-ck">&#10003;</span>Free installation</li><li><span class="feat-ck">&#10003;</span>No data caps</li></ul><button class="plan-btn" onclick="vzBillOpen()">Get This Plan</button></div><div class="plan-card hot"><div><div class="plan-badge">&#11088; Most Popular</div></div><div class="plan-name">Home Internet Plus</div><div class="plan-desc">1 Gbps &middot; Free router</div><div class="plan-price"><sup>$</sup>55<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>1 Gbps download</li><li><span class="feat-ck">&#10003;</span>Free Wi-Fi router</li><li><span class="feat-ck">&#10003;</span>5G Home backup</li><li><span class="feat-ck">&#10003;</span>No annual contract</li></ul><button class="plan-btn" onclick="vzBillOpen()">Get This Plan</button></div><div class="plan-card "><div></div><div class="plan-name">Home Internet Ultra</div><div class="plan-desc">2 Gbps &middot; Wi-Fi 6E</div><div class="plan-price"><sup>$</sup>80<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>2 Gbps download</li><li><span class="feat-ck">&#10003;</span>Wi-Fi 6E router</li><li><span class="feat-ck">&#10003;</span>5G Home backup</li><li><span class="feat-ck">&#10003;</span>Priority support</li></ul><button class="plan-btn" onclick="vzBillOpen()">Get This Plan</button></div><div class="plan-card "><div></div><div class="plan-name">Start Unlimited Mobile</div><div class="plan-desc">Unlimited &middot; 5G &middot; 4 lines</div><div class="plan-price"><sup>$</sup>45<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>Unlimited data</li><li><span class="feat-ck">&#10003;</span>5G Nationwide</li><li><span class="feat-ck">&#10003;</span>Mobile hotspot</li><li><span class="feat-ck">&#10003;</span>Per line</li></ul><button class="plan-btn" onclick="vzBillOpen()">Get This Plan</button></div><div class="plan-card hot"><div><div class="plan-badge">&#11088; Most Popular</div></div><div class="plan-name">Play More Unlimited</div><div class="plan-desc">Disney+ &middot; ESPN+ &middot; Hulu</div><div class="plan-price"><sup>$</sup>55<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>Disney+, Hulu, ESPN+</li><li><span class="feat-ck">&#10003;</span>5G Ultra Wideband</li><li><span class="feat-ck">&#10003;</span>50GB hotspot</li><li><span class="feat-ck">&#10003;</span>Per line</li></ul><button class="plan-btn" onclick="vzBillOpen()">Get This Plan</button></div><div class="plan-card "><div></div><div class="plan-name">Fios TV Ultimate</div><div class="plan-desc">425+ channels &middot; DVR</div><div class="plan-price"><sup>$</sup>90<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>425+ live channels</li><li><span class="feat-ck">&#10003;</span>HBO Max, Showtime</li><li><span class="feat-ck">&#10003;</span>Cloud DVR</li><li><span class="feat-ck">&#10003;</span>Multi-room streaming</li></ul><button class="plan-btn" onclick="vzBillOpen()">Get This Plan</button></div></div>
+<p style="text-align:center;font-size:12.5px;color:#888;margin:-28px 0 40px;font-family:'Inter',sans-serif;line-height:1.6;">*Prices require Auto Pay &amp; paperless billing; a service term may apply. Taxes, fees &amp; equipment charges are additional. Pricing and availability vary by address — see our <a href="disclaimer" style="color:#1565C0;text-decoration:underline;">full pricing disclaimer</a>.</p>
 
   <div class="prov-why">
     <div class="sec-tag"><div class="sec-bar"></div><div class="sec-bar2"></div><span class="sec-tag-text">About Verizon</span></div>
