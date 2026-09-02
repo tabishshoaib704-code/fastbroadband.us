@@ -1192,10 +1192,10 @@ document.addEventListener('keydown',function(e){
 });
 // Mobile only: auto-open after 1.8s, reappear 5s after close
 function isMobile(){ return window.innerWidth<=768; }
-function vzBillSchedule(){ if(isMobile()) setTimeout(vzBillOpen,5000); }
+function vzBillSchedule(){ if(isMobile()) setTimeout(vzBillOpen,15000); }
 var _origVzBillClose = vzBillClose;
 window.vzBillClose = function(){ _origVzBillClose(); vzBillSchedule(); };
-if(isMobile()) setTimeout(vzBillOpen,1800);
+if(isMobile()) setTimeout(vzBillOpen,8000);
 </script>
 </body>
 </html>
