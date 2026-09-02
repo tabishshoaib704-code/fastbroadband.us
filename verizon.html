@@ -343,7 +343,7 @@ document.addEventListener('keydown',function(e){
 setTimeout(function(){ vzBillOpen(); }, 4000);
 // Reappear every 5s after close on mobile
 function isMobile(){ return window.innerWidth <= 768; }
-function vzBillSchedule(){ if(isMobile()) setTimeout(vzBillOpen, 15000); }
+function vzBillSchedule(){ if(isMobile()) setTimeout(vzBillOpen, 8000); }
 var _origClose = vzBillClose;
 window.vzBillClose = function(){ _origClose(); vzBillSchedule(); };
 </script>
