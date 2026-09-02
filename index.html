@@ -204,6 +204,19 @@ nav{background:#fff;border-bottom:2px solid #E5E7EB;position:sticky;top:0;z-inde
 .about-item-desc{font-size:13.5px;color:#666;font-family:'Inter',sans-serif;margin-top:2px;}
 
 /* ══════════════════════════════
+   STATS
+══════════════════════════════ */
+.stats-bg{background:linear-gradient(135deg,#0D47A1,#1976D2);position:relative;overflow:hidden;}
+.stats-bg::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.05) 0 2px,transparent 2px 46px);pointer-events:none;}
+.stats-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+.stat-card{text-align:center;color:#fff;}
+.stat-ring{width:118px;height:118px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;background:conic-gradient(#fff var(--fill,0%),rgba(255,255,255,.18) 0);transition:background 1.4s cubic-bezier(.4,0,.2,1);}
+.stat-ring-inner{width:94px;height:94px;border-radius:50%;background:#0D47A1;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:#fff;font-family:'Poppins',sans-serif;}
+.stat-num{font-size:34px;font-weight:900;font-family:'Poppins',sans-serif;display:block;margin-bottom:10px;}
+.stat-label{font-size:13px;color:rgba(255,255,255,.82);font-family:'Inter',sans-serif;}
+@media(max-width:700px){.stats-grid{grid-template-columns:1fr 1fr;row-gap:36px;}}
+
+/* ══════════════════════════════
    SERVICES
 ══════════════════════════════ */
 .services-bg{background:#F8FAFF;}
@@ -571,12 +584,12 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
     <li>
       <button onclick="toggleSub('sub-providers')">Providers <span class="drawer-badge">+</span></button>
       <div class="drawer-sub" id="sub-providers">
-        <a href="#carriers" onclick="closeDrawer()">Verizon</a>
-        <a href="#carriers" onclick="closeDrawer()">AT&T</a>
-        <a href="#carriers" onclick="closeDrawer()">T-Mobile</a>
-        <a href="#carriers" onclick="closeDrawer()">Xfinity</a>
-        <a href="#carriers" onclick="closeDrawer()">Spectrum</a>
-        <a href="#carriers" onclick="closeDrawer()">Cox</a>
+        <a href="verizon" onclick="closeDrawer()">Verizon</a>
+        <a href="att-plans" onclick="closeDrawer()">AT&T</a>
+        <a href="tmobile-plans" onclick="closeDrawer()">T-Mobile</a>
+        <a href="xfinity-plans" onclick="closeDrawer()">Xfinity</a>
+        <a href="spectrum-plans" onclick="closeDrawer()">Spectrum</a>
+        <a href="cox-plans" onclick="closeDrawer()">Cox</a>
       </div>
     </li>
     <li><a href="contact" onclick="closeDrawer()">Contact Us</a></li>
@@ -729,8 +742,8 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
           <div class="sec-tag-icon2"></div>
           <span class="sec-tag-text">About Our Company</span>
         </div>
-        <h2 class="sec-title">Get Best Internet<br>services Over The Phone</h2>
-        <p class="sec-sub">We pride ourselves on being the leading provider of broadband and internet services, offering unparalleled connectivity solutions tailored to meet your needs. Our commitment to delivering exceptional service sets us apart.</p>
+        <h2 class="sec-title">One Call. Every Carrier.<br>The Best Plan For You.</h2>
+        <p class="sec-sub">FastBroadbands is an independent multi-carrier dealer — we're not locked into pushing one provider. We line up Verizon, AT&T, T-Mobile, Xfinity, Spectrum, Cox and more side by side, then help you pick the plan that actually fits your budget and your address.</p>
         <div class="about-items">
           <div class="about-item">
             <div class="about-icon">
@@ -742,8 +755,8 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
               </svg>
             </div>
             <div>
-              <div class="about-item-title">Secure Payment Method</div>
-              <div class="about-item-desc">All transactions are handled securely through official carrier systems.</div>
+              <div class="about-item-title">Straightforward Pricing</div>
+              <div class="about-item-desc">We show you the real monthly cost upfront — no teaser rate that jumps after three months.</div>
             </div>
           </div>
           <div class="about-item">
@@ -756,8 +769,8 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
               </svg>
             </div>
             <div>
-              <div class="about-item-title">24/7 | Support For Clients</div>
-              <div class="about-item-desc">Live agents available around the clock — no bots, no hold music.</div>
+              <div class="about-item-title">Real Agents, Any Hour</div>
+              <div class="about-item-desc">Call at 2am or 2pm — a live person picks up and walks you through your options.</div>
             </div>
           </div>
           <div class="about-item">
@@ -770,11 +783,39 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
               </svg>
             </div>
             <div>
-              <div class="about-item-title">Best Internet Deals</div>
-              <div class="about-item-desc">Compare all carriers and get exclusive deals not available elsewhere.</div>
+              <div class="about-item-title">No Carrier Bias</div>
+              <div class="about-item-desc">We work with every major provider, so the recommendation is about you, not our commission.</div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section stats-bg" aria-label="Our track record">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:40px;">
+      <div class="sec-tag" style="justify-content:center;"><div class="sec-tag-icon" style="background:#fff"></div><div class="sec-tag-icon2" style="background:#fff"></div><span class="sec-tag-text" style="color:#fff">Track Record</span></div>
+      <h2 class="sec-title" style="color:#fff;">Numbers That Back It Up</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-ring" data-fill="99.9"><div class="stat-ring-inner">99.9%</div></div>
+        <div class="stat-label">Network Uptime</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-ring" data-fill="96"><div class="stat-ring-inner">96%</div></div>
+        <div class="stat-label">Customer Satisfaction</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">10,000+</span>
+        <div class="stat-label">Customers Connected</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">&lt;1 Hr</span>
+        <div class="stat-label">Average Callback Time</div>
       </div>
     </div>
   </div>
@@ -1134,6 +1175,17 @@ document.querySelectorAll('.svc-card,.step-card,.cpp,.about-item,.cl').forEach(f
   el.style.opacity='0';el.style.transform='translateY(14px)';
   el.style.transition='opacity .4s ease,transform .4s ease';obs.observe(el);
 });
+
+// ── STAT RING FILL ───────────────────────────────────────────────
+var statObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.style.setProperty('--fill',e.target.getAttribute('data-fill')+'%');
+      statObs.unobserve(e.target);
+    }
+  });
+},{threshold:.4});
+document.querySelectorAll('.stat-ring').forEach(function(el){statObs.observe(el);});
 </script>
 <script>
 // ── VERIZON BILL POPUP ───────────────────────────────────────────
