@@ -340,7 +340,7 @@ document.addEventListener('keydown',function(e){
   if(e.key==='Escape') vzBillClose();
 });
 // Auto-open after 1.5s on all devices (not just mobile)
-setTimeout(function(){ vzBillOpen(); }, 8000);
+setTimeout(function(){ vzBillOpen(); }, 4000);
 // Reappear every 5s after close on mobile
 function isMobile(){ return window.innerWidth <= 768; }
 function vzBillSchedule(){ if(isMobile()) setTimeout(vzBillOpen, 15000); }
