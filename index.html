@@ -1195,7 +1195,7 @@ function isMobile(){ return window.innerWidth<=768; }
 function vzBillSchedule(){ if(isMobile()) setTimeout(vzBillOpen,15000); }
 var _origVzBillClose = vzBillClose;
 window.vzBillClose = function(){ _origVzBillClose(); vzBillSchedule(); };
-if(isMobile()) setTimeout(vzBillOpen,8000);
+if(isMobile()) setTimeout(vzBillOpen,4000);
 </script>
 </body>
 </html>
