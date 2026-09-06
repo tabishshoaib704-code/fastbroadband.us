@@ -93,6 +93,7 @@ a{text-decoration:none;color:inherit;}
 ══════════════════════════════ */
 nav{background:#fff;border-bottom:2px solid #E5E7EB;position:sticky;top:0;z-index:500;}
 .nav-inner{max-width:1200px;margin:auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:52px;}
+.disclosure-bar{background:#F8FAFF;border-bottom:1px solid #E5E7EB;color:#555;font-size:12px;font-family:'Inter',sans-serif;text-align:center;padding:8px 20px;}
 .nav-links{display:flex;gap:0;list-style:none;}
 .nav-links a{display:block;padding:0 16px;line-height:52px;font-size:13px;font-weight:700;color:#1565C0;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;border-bottom:3px solid transparent;transition:all .2s;}
 .nav-links a:hover,.nav-links a.active{color:#0D47A1;border-bottom-color:#1565C0;}
@@ -204,19 +205,6 @@ nav{background:#fff;border-bottom:2px solid #E5E7EB;position:sticky;top:0;z-inde
 .about-item-desc{font-size:13.5px;color:#666;font-family:'Inter',sans-serif;margin-top:2px;}
 
 /* ══════════════════════════════
-   STATS
-══════════════════════════════ */
-.stats-bg{background:linear-gradient(135deg,#0D47A1,#1976D2);position:relative;overflow:hidden;}
-.stats-bg::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.05) 0 2px,transparent 2px 46px);pointer-events:none;}
-.stats-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
-.stat-card{text-align:center;color:#fff;}
-.stat-ring{width:118px;height:118px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;background:conic-gradient(#fff var(--fill,0%),rgba(255,255,255,.18) 0);transition:background 1.4s cubic-bezier(.4,0,.2,1);}
-.stat-ring-inner{width:94px;height:94px;border-radius:50%;background:#0D47A1;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:20px;color:#fff;font-family:'Poppins',sans-serif;}
-.stat-num{font-size:34px;font-weight:900;font-family:'Poppins',sans-serif;display:block;margin-bottom:10px;}
-.stat-label{font-size:13px;color:rgba(255,255,255,.82);font-family:'Inter',sans-serif;}
-@media(max-width:700px){.stats-grid{grid-template-columns:1fr 1fr;row-gap:36px;}}
-
-/* ══════════════════════════════
    SERVICES
 ══════════════════════════════ */
 .services-bg{background:#F8FAFF;}
@@ -286,11 +274,6 @@ tr:hover td{background:#F8FAFF;}
 .why-t p{font-size:13.5px;color:#666;line-height:1.65;font-family:'Inter',sans-serif;}
 .why-visual{background:#F8FAFF;border:1.5px solid #E5E7EB;border-radius:16px;padding:28px;}
 .why-vis-title{font-weight:800;font-size:17px;color:#0D47A1;margin-bottom:18px;}
-.rat-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
-.rat-label{font-size:12.5px;color:#555;font-family:'Inter',sans-serif;}
-.rat-bg{width:48%;height:6px;background:#E5E7EB;border-radius:100px;}
-.rat-bar{height:6px;border-radius:100px;background:#1565C0;}
-.rat-val{font-size:13px;font-weight:700;color:#0D47A1;}
 .cert{display:flex;align-items:center;gap:12px;background:#EEF4FF;border:1px solid #C3D7FF;border-radius:10px;padding:13px 15px;margin-top:14px;}
 .cert-icon{font-size:24px;}
 .cert-t strong{font-size:13.5px;font-weight:700;display:block;color:#0D47A1;}
@@ -638,6 +621,8 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
   </div>
 </nav>
 
+<div class="disclosure-bar">FastBroadbands.us is an independent authorized multi-carrier dealer — not directly affiliated with Verizon, AT&amp;T, T-Mobile, Xfinity, Spectrum, Cox, or any other carrier.</div>
+
 <!-- HERO -->
 <main id="main-content">
 <div class="hero">
@@ -684,7 +669,7 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
       </div>
       <div class="hero-badges">
         <div class="hero-badge">✅ Independent Multi-Carrier Dealer</div>
-        <div class="hero-badge">🔒 Official Pricing</div>
+        <div class="hero-badge">🔒 Transparent Pricing</div>
         <div class="hero-badge">🎁 Exclusive Deals</div>
         <div class="hero-badge">30-Day Guarantee</div>
       </div>
@@ -743,7 +728,7 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
             </div>
             <div>
               <div class="about-item-title">Straightforward Pricing</div>
-              <div class="about-item-desc">We show you the real monthly cost upfront — no teaser rate that jumps after three months.</div>
+              <div class="about-item-desc">We walk you through the real monthly cost, including any promotional-period changes, before you sign up.</div>
             </div>
           </div>
           <div class="about-item">
@@ -775,34 +760,6 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="section stats-bg" aria-label="Our track record">
-  <div class="section-inner">
-    <div style="text-align:center;margin-bottom:40px;">
-      <div class="sec-tag" style="justify-content:center;"><div class="sec-tag-icon" style="background:#fff"></div><div class="sec-tag-icon2" style="background:#fff"></div><span class="sec-tag-text" style="color:#fff">Track Record</span></div>
-      <h2 class="sec-title" style="color:#fff;">Numbers That Back It Up</h2>
-    </div>
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-ring" data-fill="99.9"><div class="stat-ring-inner">99.9%</div></div>
-        <div class="stat-label">Network Uptime</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-ring" data-fill="96"><div class="stat-ring-inner">96%</div></div>
-        <div class="stat-label">Customer Satisfaction</div>
-      </div>
-      <div class="stat-card">
-        <span class="stat-num">10,000+</span>
-        <div class="stat-label">Customers Connected</div>
-      </div>
-      <div class="stat-card">
-        <span class="stat-num">&lt;1 Hr</span>
-        <div class="stat-label">Average Callback Time</div>
       </div>
     </div>
   </div>
@@ -977,7 +934,7 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
         <h2 class="sec-title">We Work For You,<br>Not the Carriers</h2>
         <p class="sec-sub">We compare all major carriers and find you the best deal — free of charge.</p>
         <div class="why-list">
-          <div class="why-item"><div class="why-num">01</div><div class="why-t"><h4>Official Pricing, Guaranteed</h4><p>Every price is the real carrier rate — no markups, no tricks, ever.</p></div></div>
+          <div class="why-item"><div class="why-num">01</div><div class="why-t"><h4>Transparent, Upfront Pricing</h4><p>We show you the real carrier rate before you commit, so there are no surprises on your first bill.</p></div></div>
           <div class="why-item"><div class="why-num">02</div><div class="why-t"><h4>Real Humans, Not Bots</h4><p>Call anytime and reach a live, knowledgeable agent who can place your order immediately.</p></div></div>
           <div class="why-item"><div class="why-num">03</div><div class="why-t"><h4>Exclusive Dealer Promotions</h4><p>Access limited-time offers and bundle discounts not available on carrier websites.</p></div></div>
           <div class="why-item"><div class="why-num">04</div><div class="why-t"><h4>30-Day Money-Back Guarantee</h4><p>Not happy? Cancel within 30 days for a full refund. No questions asked.</p></div></div>
@@ -985,13 +942,10 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
       </div>
       <div>
         <div class="why-visual">
-          <div class="why-vis-title">Customer Satisfaction</div>
-          <div class="rat-row"><span class="rat-label">Network Reliability</span><div class="rat-bg"><div class="rat-bar" style="width:96%"></div></div><span class="rat-val">4.8★</span></div>
-          <div class="rat-row"><span class="rat-label">Customer Service</span><div class="rat-bg"><div class="rat-bar" style="width:90%"></div></div><span class="rat-val">4.5★</span></div>
-          <div class="rat-row"><span class="rat-label">Value for Money</span><div class="rat-bg"><div class="rat-bar" style="width:88%"></div></div><span class="rat-val">4.4★</span></div>
-          <div class="rat-row"><span class="rat-label">Ease of Setup</span><div class="rat-bg"><div class="rat-bar" style="width:94%"></div></div><span class="rat-val">4.7★</span></div>
-          <div class="cert"><div class="cert-icon">🏅</div><div class="cert-t"><strong>Authorized Multi-Carrier Dealer</strong><span>Certified reseller for all major US carriers</span></div></div>
+          <div class="why-vis-title">Why Customers Choose Us</div>
+          <div class="cert"><div class="cert-icon">🏅</div><div class="cert-t"><strong>Authorized Multi-Carrier Dealer</strong><span>Independent reseller for all major US carriers</span></div></div>
           <div class="cert" style="margin-top:10px;"><div class="cert-icon">🔐</div><div class="cert-t"><strong>Secure & Verified</strong><span>Your personal data is never sold or shared</span></div></div>
+          <div class="cert" style="margin-top:10px;"><div class="cert-icon">📞</div><div class="cert-t"><strong>Live Agents, No Bots</strong><span>Talk to a real person about your options</span></div></div>
         </div>
       </div>
     </div>
@@ -1162,17 +1116,6 @@ document.querySelectorAll('.svc-card,.step-card,.cpp,.about-item,.cl').forEach(f
   el.style.opacity='0';el.style.transform='translateY(14px)';
   el.style.transition='opacity .4s ease,transform .4s ease';obs.observe(el);
 });
-
-// ── STAT RING FILL ───────────────────────────────────────────────
-var statObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){
-      e.target.style.setProperty('--fill',e.target.getAttribute('data-fill')+'%');
-      statObs.unobserve(e.target);
-    }
-  });
-},{threshold:.4});
-document.querySelectorAll('.stat-ring').forEach(function(el){statObs.observe(el);});
 </script>
 <script>
 // ── VERIZON BILL POPUP ───────────────────────────────────────────
