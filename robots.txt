@@ -27,3 +27,5 @@ Disallow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://fastbroadbands.us/sitemap.xml
