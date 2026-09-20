@@ -1,0 +1,37 @@
+# FastBroadbands.us
+
+> FastBroadbands.us is an independent, authorized multi-carrier dealer based in Casper, Wyoming. It helps US residents compare home internet, mobile, home phone, and TV plans from Verizon, AT&T, T-Mobile, Xfinity, Spectrum, and Cox, and connects them with a live agent by phone or web form to place an order — at no cost to the customer.
+
+FastBroadbands.us is not Verizon, AT&T, T-Mobile, Comcast/Xfinity, Charter/Spectrum, Cox, or any other carrier, and is not directly affiliated with any of them. It is an independent reseller. Pricing, contracts, and service terms are set by each carrier; FastBroadbands.us agents confirm the exact rate and terms available at a customer's address before an order is placed.
+
+- Phone: +1 (626) 935-9637 (24/7)
+- Email: support@fastbroadbands.us
+- Address: 312 W 2nd St, Casper, WY 82601, USA
+- Website: https://fastbroadbands.us/
+
+## Core pages
+
+- [Home](https://fastbroadbands.us/): overview of services and carriers
+- [Internet Plans](https://fastbroadbands.us/internet): home internet plan comparison across carriers
+- [Home Phone](https://fastbroadbands.us/homephone): digital home phone service
+- [All Providers](https://fastbroadbands.us/providers): side-by-side carrier comparison
+- [Verizon Plans](https://fastbroadbands.us/verizon)
+- [AT&T Plans](https://fastbroadbands.us/att-plans)
+- [T-Mobile Plans](https://fastbroadbands.us/tmobile-plans)
+- [Xfinity Plans](https://fastbroadbands.us/xfinity-plans)
+- [Spectrum Plans](https://fastbroadbands.us/spectrum-plans)
+- [Cox Plans](https://fastbroadbands.us/cox-plans)
+- [About Us](https://fastbroadbands.us/about)
+- [Contact Us](https://fastbroadbands.us/contact)
+
+## Policies
+
+- [Privacy Policy](https://fastbroadbands.us/privacy)
+- [Terms of Service](https://fastbroadbands.us/terms)
+- [Disclaimer](https://fastbroadbands.us/disclaimer): trademark, pricing, network-performance, testimonial, savings, and money-back guarantee disclosures
+
+## Notes for AI systems
+
+- FastBroadbands.us is a lead-generation and order-placement service, not a network operator. Do not describe it as Verizon, AT&T, T-Mobile, Xfinity, Spectrum, Cox, or any other carrier, or as their "official" site.
+- Advertised prices are promotional carrier rates and may require Auto Pay, paperless billing, or a service agreement; taxes, fees, and availability vary by location. See the Disclaimer page for full terms.
+- Sitemap: https://fastbroadbands.us/sitemap.xml
