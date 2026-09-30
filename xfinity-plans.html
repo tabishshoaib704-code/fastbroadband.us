@@ -58,6 +58,8 @@ nav{background:#fff;border-bottom:2px solid #E5E7EB;position:sticky;top:0;z-inde
 .sec-tag-text{font-size:11px;font-weight:800;color:#1565C0;letter-spacing:.1em;text-transform:uppercase;}
 .sec-title{font-weight:800;font-size:clamp(24px,3.5vw,38px);color:#0A0A0A;line-height:1.2;margin-bottom:12px;}
 .sec-sub{color:#666;font-size:15px;line-height:1.75;max-width:620px;margin-bottom:36px;font-family:'Inter',sans-serif;}
+.direct-answer{background:#EEF4FF;border-left:3px solid #1565C0;border-radius:0 8px 8px 0;padding:14px 18px;font-size:14.5px;color:#1A1A1A;font-family:'Inter',sans-serif;line-height:1.6;margin:-16px 0 32px;max-width:680px;}
+.direct-answer strong{color:#0D47A1;}
 /* plan cards */
 .plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-bottom:48px;}
 .plan-card{background:#F8FAFF;border:1.5px solid #E5E7EB;border-radius:14px;padding:24px 20px;transition:all .2s;}
@@ -173,6 +175,85 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
 .prov-why{background:#F8FAFF;border:1.5px solid #E5E7EB;border-radius:16px;padding:32px;margin-bottom:40px;}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Connect",
+      "description": "75 Mbps · Budget-friendly",
+      "offers": {
+        "@type": "Offer",
+        "price": "30",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/xfinity-plans"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Connect More",
+      "description": "300 Mbps · Streaming",
+      "offers": {
+        "@type": "Offer",
+        "price": "45",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/xfinity-plans"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Fast",
+      "description": "600 Mbps · Multiple devices",
+      "offers": {
+        "@type": "Offer",
+        "price": "55",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/xfinity-plans"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Gigabit",
+      "description": "1 Gbps · Whole home",
+      "offers": {
+        "@type": "Offer",
+        "price": "70",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/xfinity-plans"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Gigabit Extra",
+      "description": "1.2 Gbps · Maximum",
+      "offers": {
+        "@type": "Offer",
+        "price": "80",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/xfinity-plans"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Xfinity Mobile",
+      "description": "On Verizon network · Per line",
+      "offers": {
+        "@type": "Offer",
+        "price": "15",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/xfinity-plans"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="fp-overlay" id="fpPopup" role="dialog" aria-modal="true">
@@ -237,6 +318,7 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
 
   <div class="sec-tag"><div class="sec-bar"></div><div class="sec-bar2"></div><span class="sec-tag-text">Xfinity Plans</span></div>
   <h2 class="sec-title">Available Plans</h2>
+  <p class="direct-answer"><strong>Cheapest Xfinity plan:</strong> Xfinity Connect starts at $30/mo (75 Mbps) through FastBroadbands.us.</p>
   <p class="sec-sub">All prices require Auto Pay &amp; paperless billing where applicable. Taxes &amp; fees not included. Availability varies by address.</p>
   <div class="plans-grid"><div class="plan-card "><div></div><div class="plan-name">Connect</div><div class="plan-desc">75 Mbps &middot; Budget-friendly</div><div class="plan-price"><sup>$</sup>30<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>75 Mbps download</li><li><span class="feat-ck">&#10003;</span>Peacock Premium</li><li><span class="feat-ck">&#10003;</span>Free Flex 4K box</li><li><span class="feat-ck">&#10003;</span>No annual contract option</li></ul><button class="plan-btn" onclick="fpOpen()">Get This Plan</button></div><div class="plan-card hot"><div><div class="plan-badge">&#11088; Most Popular</div></div><div class="plan-name">Connect More</div><div class="plan-desc">300 Mbps &middot; Streaming</div><div class="plan-price"><sup>$</sup>45<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>300 Mbps download</li><li><span class="feat-ck">&#10003;</span>Peacock Premium</li><li><span class="feat-ck">&#10003;</span>Free Flex 4K box</li><li><span class="feat-ck">&#10003;</span>Unlimited data option</li></ul><button class="plan-btn" onclick="fpOpen()">Get This Plan</button></div><div class="plan-card "><div></div><div class="plan-name">Fast</div><div class="plan-desc">600 Mbps &middot; Multiple devices</div><div class="plan-price"><sup>$</sup>55<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>600 Mbps download</li><li><span class="feat-ck">&#10003;</span>Peacock Premium</li><li><span class="feat-ck">&#10003;</span>Unlimited data option</li><li><span class="feat-ck">&#10003;</span>Advanced Security</li></ul><button class="plan-btn" onclick="fpOpen()">Get This Plan</button></div><div class="plan-card "><div></div><div class="plan-name">Gigabit</div><div class="plan-desc">1 Gbps &middot; Whole home</div><div class="plan-price"><sup>$</sup>70<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>1 Gbps download</li><li><span class="feat-ck">&#10003;</span>xFi Gateway</li><li><span class="feat-ck">&#10003;</span>Unlimited data</li><li><span class="feat-ck">&#10003;</span>Advanced Security</li></ul><button class="plan-btn" onclick="fpOpen()">Get This Plan</button></div><div class="plan-card hot"><div><div class="plan-badge">&#11088; Most Popular</div></div><div class="plan-name">Gigabit Extra</div><div class="plan-desc">1.2 Gbps &middot; Maximum</div><div class="plan-price"><sup>$</sup>80<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>1.2 Gbps download</li><li><span class="feat-ck">&#10003;</span>xFi Gateway</li><li><span class="feat-ck">&#10003;</span>Unlimited data</li><li><span class="feat-ck">&#10003;</span>Priority support</li></ul><button class="plan-btn" onclick="fpOpen()">Get This Plan</button></div><div class="plan-card "><div></div><div class="plan-name">Xfinity Mobile</div><div class="plan-desc">On Verizon network &middot; Per line</div><div class="plan-price"><sup>$</sup>15<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>Pay By Gig or Unlimited</li><li><span class="feat-ck">&#10003;</span>5G included</li><li><span class="feat-ck">&#10003;</span>No line access fees</li><li><span class="feat-ck">&#10003;</span>With Xfinity internet</li></ul><button class="plan-btn" onclick="fpOpen()">Get This Plan</button></div></div>
 <p style="text-align:center;font-size:12.5px;color:#888;margin:-28px 0 40px;font-family:'Inter',sans-serif;line-height:1.6;">*Prices require Auto Pay &amp; paperless billing; a service term may apply. Taxes, fees &amp; equipment charges are additional. Pricing and availability vary by address — see our <a href="disclaimer" style="color:#1565C0;text-decoration:underline;">full pricing disclaimer</a>.</p>

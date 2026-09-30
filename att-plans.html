@@ -58,6 +58,8 @@ nav{background:#fff;border-bottom:2px solid #E5E7EB;position:sticky;top:0;z-inde
 .sec-tag-text{font-size:11px;font-weight:800;color:#1565C0;letter-spacing:.1em;text-transform:uppercase;}
 .sec-title{font-weight:800;font-size:clamp(24px,3.5vw,38px);color:#0A0A0A;line-height:1.2;margin-bottom:12px;}
 .sec-sub{color:#666;font-size:15px;line-height:1.75;max-width:620px;margin-bottom:36px;font-family:'Inter',sans-serif;}
+.direct-answer{background:#EEF4FF;border-left:3px solid #1565C0;border-radius:0 8px 8px 0;padding:14px 18px;font-size:14.5px;color:#1A1A1A;font-family:'Inter',sans-serif;line-height:1.6;margin:-16px 0 32px;max-width:680px;}
+.direct-answer strong{color:#0D47A1;}
 /* plan cards */
 .plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-bottom:48px;}
 .plan-card{background:#F8FAFF;border:1.5px solid #E5E7EB;border-radius:14px;padding:24px 20px;transition:all .2s;}
@@ -173,6 +175,85 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
 .prov-why{background:#F8FAFF;border:1.5px solid #E5E7EB;border-radius:16px;padding:32px;margin-bottom:40px;}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Internet 300",
+      "description": "300 Mbps · No contract",
+      "offers": {
+        "@type": "Offer",
+        "price": "35",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/att-plans"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Internet 1 Gig",
+      "description": "1 Gbps · Best value",
+      "offers": {
+        "@type": "Offer",
+        "price": "55",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/att-plans"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Internet 2 Gig",
+      "description": "2 Gbps · Maximum speed",
+      "offers": {
+        "@type": "Offer",
+        "price": "80",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/att-plans"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Unlimited Starter",
+      "description": "Unlimited · 5G · 4 lines",
+      "offers": {
+        "@type": "Offer",
+        "price": "35",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/att-plans"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Unlimited Extra",
+      "description": "50GB hotspot · 5G",
+      "offers": {
+        "@type": "Offer",
+        "price": "45",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/att-plans"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "DIRECTV + Internet",
+      "description": "Satellite TV + 1 Gig Internet",
+      "offers": {
+        "@type": "Offer",
+        "price": "100",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/att-plans"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="fp-overlay" id="fpPopup" role="dialog" aria-modal="true">
@@ -237,6 +318,7 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
 
   <div class="sec-tag"><div class="sec-bar"></div><div class="sec-bar2"></div><span class="sec-tag-text">AT&amp;T Plans</span></div>
   <h2 class="sec-title">Available Plans</h2>
+  <p class="direct-answer"><strong>Cheapest AT&amp;T plan:</strong> AT&amp;T Internet 300 starts at $35/mo (300 Mbps symmetrical, no annual contract) through FastBroadbands.us.</p>
   <p class="sec-sub">All prices require Auto Pay &amp; paperless billing where applicable. Taxes &amp; fees not included. Availability varies by address.</p>
   <div class="plans-grid"><div class="plan-card "><div></div><div class="plan-name">Internet 300</div><div class="plan-desc">300 Mbps &middot; No contract</div><div class="plan-price"><sup>$</sup>35<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>300 Mbps up &amp; down</li><li><span class="feat-ck">&#10003;</span>No annual contract</li><li><span class="feat-ck">&#10003;</span>No data caps</li><li><span class="feat-ck">&#10003;</span>Free gateway</li></ul><button class="plan-btn" onclick="fpOpen()">Get This Plan</button></div><div class="plan-card hot"><div><div class="plan-badge">&#11088; Most Popular</div></div><div class="plan-name">Internet 1 Gig</div><div class="plan-desc">1 Gbps &middot; Best value</div><div class="plan-price"><sup>$</sup>55<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>1 Gbps up &amp; down</li><li><span class="feat-ck">&#10003;</span>No annual contract</li><li><span class="feat-ck">&#10003;</span>Free gateway</li><li><span class="feat-ck">&#10003;</span>Wi-Fi extenders</li></ul><button class="plan-btn" onclick="fpOpen()">Get This Plan</button></div><div class="plan-card "><div></div><div class="plan-name">Internet 2 Gig</div><div class="plan-desc">2 Gbps &middot; Maximum speed</div><div class="plan-price"><sup>$</sup>80<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>2 Gbps up &amp; down</li><li><span class="feat-ck">&#10003;</span>Free gateway</li><li><span class="feat-ck">&#10003;</span>Best for large homes</li><li><span class="feat-ck">&#10003;</span>Priority support</li></ul><button class="plan-btn" onclick="fpOpen()">Get This Plan</button></div><div class="plan-card "><div></div><div class="plan-name">Unlimited Starter</div><div class="plan-desc">Unlimited &middot; 5G &middot; 4 lines</div><div class="plan-price"><sup>$</sup>35<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>Unlimited data</li><li><span class="feat-ck">&#10003;</span>5G included</li><li><span class="feat-ck">&#10003;</span>5GB hotspot</li><li><span class="feat-ck">&#10003;</span>Per line</li></ul><button class="plan-btn" onclick="fpOpen()">Get This Plan</button></div><div class="plan-card hot"><div><div class="plan-badge">&#11088; Most Popular</div></div><div class="plan-name">Unlimited Extra</div><div class="plan-desc">50GB hotspot &middot; 5G</div><div class="plan-price"><sup>$</sup>45<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>50GB premium hotspot</li><li><span class="feat-ck">&#10003;</span>5G Ultra Capacity</li><li><span class="feat-ck">&#10003;</span>HBO Max included</li><li><span class="feat-ck">&#10003;</span>Per line</li></ul><button class="plan-btn" onclick="fpOpen()">Get This Plan</button></div><div class="plan-card "><div></div><div class="plan-name">DIRECTV + Internet</div><div class="plan-desc">Satellite TV + 1 Gig Internet</div><div class="plan-price"><sup>$</sup>100<sub>/mo</sub></div><ul class="plan-feats"><li><span class="feat-ck">&#10003;</span>150+ live channels</li><li><span class="feat-ck">&#10003;</span>1 Gbps Fiber</li><li><span class="feat-ck">&#10003;</span>Cloud DVR</li><li><span class="feat-ck">&#10003;</span>Bundle savings</li></ul><button class="plan-btn" onclick="fpOpen()">Get This Plan</button></div></div>
 <p style="text-align:center;font-size:12.5px;color:#888;margin:-28px 0 40px;font-family:'Inter',sans-serif;line-height:1.6;">*Prices require Auto Pay &amp; paperless billing; a service term may apply. Taxes, fees &amp; equipment charges are additional. Pricing and availability vary by address — see our <a href="disclaimer" style="color:#1565C0;text-decoration:underline;">full pricing disclaimer</a>.</p>
