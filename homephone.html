@@ -57,6 +57,8 @@ nav{background:#fff;border-bottom:2px solid #E5E7EB;position:sticky;top:0;z-inde
 .sec-tag-text{font-size:11px;font-weight:800;color:#1565C0;letter-spacing:.1em;text-transform:uppercase;}
 .sec-title{font-weight:800;font-size:clamp(24px,3.5vw,38px);color:#0A0A0A;line-height:1.2;margin-bottom:12px;}
 .sec-sub{color:#666;font-size:15px;line-height:1.75;max-width:620px;margin-bottom:36px;font-family:'Inter',sans-serif;}
+.direct-answer{background:#EEF4FF;border-left:3px solid #1565C0;border-radius:0 8px 8px 0;padding:14px 18px;font-size:14.5px;color:#1A1A1A;font-family:'Inter',sans-serif;line-height:1.6;margin:-16px 0 32px;max-width:680px;}
+.direct-answer strong{color:#0D47A1;}
 /* plan cards */
 .plans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-bottom:48px;}
 .plan-card{background:#F8FAFF;border:1.5px solid #E5E7EB;border-radius:14px;padding:24px 20px;transition:all .2s;}
@@ -156,6 +158,49 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
 @media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr;}.nav-links{display:none;}}
 @media(max-width:600px){.form-grid{grid-template-columns:1fr;}.footer-inner{grid-template-columns:1fr;}.fp-row{grid-template-columns:1fr;}.plans-grid{grid-template-columns:1fr;}}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Product",
+      "name": "Basic Home Phone",
+      "description": "Unlimited domestic calls · Core features",
+      "offers": {
+        "@type": "Offer",
+        "price": "10",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/homephone"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Home Phone + Internet Bundle",
+      "description": "Phone + 300 Mbps Internet · Save $15/mo",
+      "offers": {
+        "@type": "Offer",
+        "price": "55",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/homephone"
+      }
+    },
+    {
+      "@type": "Product",
+      "name": "Premium Home Phone",
+      "description": "Unlimited international · HD voice",
+      "offers": {
+        "@type": "Offer",
+        "price": "25",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://fastbroadbands.us/homephone"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="fp-overlay" id="fpPopup" role="dialog" aria-modal="true">
@@ -204,6 +249,7 @@ footer{background:#0A1628;color:#fff;padding:52px 20px 0;}
 <div class="content">
 <div class="sec-tag"><div class="sec-bar"></div><div class="sec-bar2"></div><span class="sec-tag-text">Home Phone Plans</span></div>
 <h2 class="sec-title">Reliable Home Phone Service</h2>
+<p class="direct-answer"><strong>Cheapest home phone plan:</strong> Basic Home Phone starts at $10/mo with unlimited domestic calling through FastBroadbands.us.</p>
 <p class="sec-sub">Digital home phone service with unlimited domestic calling, crystal-clear audio, and the reliability of major carriers — starting from just $10/mo when bundled.</p>
 <div class="features-grid">
   <div class="feat-card"><div class="feat-icon">☎️</div><div class="feat-title">Unlimited Domestic Calling</div><div class="feat-desc">Call anywhere in the US and Canada with no per-minute charges or hidden fees.</div></div>
